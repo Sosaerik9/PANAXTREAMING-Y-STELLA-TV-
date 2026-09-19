@@ -1,0 +1,502 @@
+<!-- CONTENEDOR DE PANTALLA COMPLETA (ADAPTABLE A PC, LAPTOP Y MÓVIL) -->
+<div class="full-screen-container">
+    
+    <!-- WIDGET PRINCIPAL EXPANDIDO -->
+    <div class="streaming-widget-full">
+        
+        <!-- ENCABEZADO -->
+        <div class="widget-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <h3>Centro de Entretenimiento - Panel Principal</h3>
+        </div>
+        
+        <p class="widget-subtitle">Selecciona un servicio y realiza tu pedido por WhatsApp:</p>
+
+        <!-- ZONA DE BOTONES Y SECCIONES -->
+        <div class="widget-buttons">
+            
+            <!-- ================= BLOQUE 1: PANAXTREAMING (VERDE FOFORECENTE) ================= -->
+            <div class="service-group pana-bg-image">
+                <a href="https://wa.me/584262753916?text=Hola,%20quiero%20información%20sobre%20las%20cuentas%20y%20servicios%20de%20PanaXtreaming" target="_blank" class="stream-btn pana-btn">
+                    <span class="icon">🍿</span>
+                    <div class="btn-text">
+                        <strong>PanaXtreaming</strong>
+                        <small>Cuentas completas y streaming</small>
+                    </div>
+                </a>
+                
+                <!-- Opciones desplegables organizadas -->
+                <div class="sub-buttons">
+                    
+                    <!-- 1. Datos de Pago -->
+                    <details class="info-box payment-box">
+                        <summary class="icon-text">
+                            <span class="icon">💳</span>
+                            <div class="btn-text"><strong>Datos de Pago</strong><small>Ver Pago Móvil Provincial</small></div>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown-content">
+                            <p><strong>Banco:</strong> Provincial | <strong>Tipo:</strong> Pago Móvil</p>
+                            <div class="copy-row">
+                                <span><strong>C.I:</strong> <span id="ci-pana">20432896</span></span>
+                                <button class="copy-btn" onclick="copiarTexto('ci-pana', this)">Copiar</button>
+                            </div>
+                            <div class="copy-row">
+                                <span><strong>Tel:</strong> <span id="tel-pana">04262753916</span></span>
+                                <button class="copy-btn" onclick="copiarTexto('tel-pana', this)">Copiar</button>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- 2. Enviar Comprobante (Con Carga y Pegado de Imagen) -->
+                    <details class="info-box receipt-box">
+                        <summary class="icon-text">
+                            <span class="icon">📷</span>
+                            <div class="btn-text"><strong>Enviar Comprobante</strong><small>Adjunta o pega tu captura</small></div>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown-content">
+                            <p>Ingresa tu referencia y adjunta/pega tu capture:</p>
+                            <input type="text" placeholder="Número de Referencia / Cédula" class="input-field" id="ref-pana">
+                            
+                            <!-- Zona para adjuntar o pegar imagen -->
+                            <div class="upload-area" id="drop-zone-pana" onpaste="manejarPegado(event, 'preview-pana', 'file-input-pana')">
+                                <input type="file" id="file-input-pana" accept="image/*" style="display:none" onchange="mostrarVistaPrevia(this, 'preview-pana')">
+                                <div class="upload-prompt" onclick="document.getElementById('file-input-pana').click()">
+                                    <span>📁 Toca para elegir de galería o <strong>pega tu captura aquí (Ctrl+V)</strong></span>
+                                </div>
+                                <div class="preview-container" id="preview-pana" style="display:none;">
+                                    <img src="" alt="Vista previa" id="img-preview-pana">
+                                    <button type="button" class="remove-img" onclick="removerImagen('preview-pana', 'file-input-pana')">✕ Quitar</button>
+                                </div>
+                            </div>
+
+                            <div class="text-center-btn">
+                                <a href="#" onclick="enviarComprobanteConImagenWhatsApp('PanaXtreaming', 'ref-pana', 'img-preview-pana')" class="action-whatsapp pana-btn-fixed">Enviar a WhatsApp</a>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- 3. Cuenta Completa -->
+                    <details class="info-box account-box">
+                        <summary class="icon-text">
+                            <span class="icon">📧</span>
+                            <div class="btn-text"><strong>Cuenta Completa</strong><small>8$ (Tasa BCV)</small></div>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown-content">
+                            <p>Escribe tu correo:</p>
+                            <input type="email" placeholder="tucorreo@gmail.com" class="input-field" id="email-pana-completa">
+                            <div class="text-center-btn">
+                                <a href="#" onclick="enviarPedidoWhatsApp('PanaXtreaming - Cuenta Completa (8$)', 'email-pana-completa')" class="action-whatsapp pana-btn-fixed">Pedir por WhatsApp</a>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- 4. 1 Pantalla -->
+                    <details class="info-box screen-box">
+                        <summary class="icon-text">
+                            <span class="icon">📱</span>
+                            <div class="btn-text"><strong>1 Pantalla</strong><small>4$ (Tasa BCV)</small></div>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown-content">
+                            <p>Escribe tu correo:</p>
+                            <input type="email" placeholder="tucorreo@gmail.com" class="input-field" id="email-pana-pantalla">
+                            <div class="text-center-btn">
+                                <a href="#" onclick="enviarPedidoWhatsApp('PanaXtreaming - 1 Pantalla (4$)', 'email-pana-pantalla')" class="action-whatsapp pana-btn-fixed">Pedir por WhatsApp</a>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+
+            <!-- ================= BLOQUE 2: STELLA TV (ROSA VIEJO) ================= -->
+            <div class="service-group stella-bg-image">
+                <a href="https://wa.me/584262753916?text=Hola,%20quiero%20información%20sobre%20los%20planes%20y%20canales%20de%20Stella%20TV" target="_blank" class="stream-btn stella-btn">
+                    <span class="icon">📺</span>
+                    <div class="btn-text">
+                        <strong>Stella TV</strong>
+                        <small>Televisión en vivo y deportes</small>
+                    </div>
+                </a>
+                
+                <!-- Opciones desplegables organizadas -->
+                <div class="sub-buttons">
+                    
+                    <!-- 1. Datos de Pago -->
+                    <details class="info-box payment-box">
+                        <summary class="icon-text">
+                            <span class="icon">💳</span>
+                            <div class="btn-text"><strong>Datos de Pago</strong><small>Ver Pago Móvil Provincial</small></div>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown-content">
+                            <p><strong>Banco:</strong> Provincial | <strong>Tipo:</strong> Pago Móvil</p>
+                            <div class="copy-row">
+                                <span><strong>C.I:</strong> <span id="ci-stella">20432896</span></span>
+                                <button class="copy-btn" onclick="copiarTexto('ci-stella', this)">Copiar</button>
+                            </div>
+                            <div class="copy-row">
+                                <span><strong>Tel:</strong> <span id="tel-stella">04262753916</span></span>
+                                <button class="copy-btn" onclick="copiarTexto('tel-stella', this)">Copiar</button>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- 2. Enviar Comprobante (Con Carga y Pegado de Imagen) -->
+                    <details class="info-box receipt-box">
+                        <summary class="icon-text">
+                            <span class="icon">📷</span>
+                            <div class="btn-text"><strong>Enviar Comprobante</strong><small>Adjunta o pega tu captura</small></div>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown-content">
+                            <p>Ingresa tu referencia y adjunta/pega tu capture:</p>
+                            <input type="text" placeholder="Número de Referencia / Cédula" class="input-field" id="ref-stella">
+                            
+                            <!-- Zona para adjuntar o pegar imagen -->
+                            <div class="upload-area" id="drop-zone-stella" onpaste="manejarPegado(event, 'preview-stella', 'file-input-stella')">
+                                <input type="file" id="file-input-stella" accept="image/*" style="display:none" onchange="mostrarVistaPrevia(this, 'preview-stella')">
+                                <div class="upload-prompt" onclick="document.getElementById('file-input-stella').click()">
+                                    <span>📁 Toca para elegir de galería o <strong>pega tu captura aquí (Ctrl+V)</strong></span>
+                                </div>
+                                <div class="preview-container" id="preview-stella" style="display:none;">
+                                    <img src="" alt="Vista previa" id="img-preview-stella">
+                                    <button type="button" class="remove-img" onclick="removerImagen('preview-stella', 'file-input-stella')">✕ Quitar</button>
+                                </div>
+                            </div>
+
+                            <div class="text-center-btn">
+                                <a href="#" onclick="enviarComprobanteConImagenWhatsApp('Stella TV', 'ref-stella', 'img-preview-stella')" class="action-whatsapp stella-btn-fixed">Enviar a WhatsApp</a>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- 3. Cuenta Completa -->
+                    <details class="info-box account-box">
+                        <summary class="icon-text">
+                            <span class="icon">📧</span>
+                            <div class="btn-text"><strong>Cuenta Completa</strong><small>13$</small></div>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown-content">
+                            <p>Escribe tu correo:</p>
+                            <input type="email" placeholder="tucorreo@gmail.com" class="input-field" id="email-stella-completa">
+                            <div class="text-center-btn">
+                                <a href="#" onclick="enviarPedidoWhatsApp('Stella TV - Cuenta Completa (13$)', 'email-stella-completa')" class="action-whatsapp stella-btn-fixed">Pedir por WhatsApp</a>
+                            </div>
+                        </div>
+                    </details>
+
+                    <!-- 4. 1 Pantalla -->
+                    <details class="info-box screen-box">
+                        <summary class="icon-text">
+                            <span class="icon">📱</span>
+                            <div class="btn-text"><strong>1 Pantalla</strong><small>6$</small></div>
+                            <span class="arrow">▼</span>
+                        </summary>
+                        <div class="dropdown-content">
+                            <p>Escribe tu correo:</p>
+                            <input type="email" placeholder="tucorreo@gmail.com" class="input-field" id="email-stella-pantalla">
+                            <div class="text-center-btn">
+                                <a href="#" onclick="enviarPedidoWhatsApp('Stella TV - 1 Pantalla (6$)', 'email-stella-pantalla')" class="action-whatsapp stella-btn-fixed">Pedir por WhatsApp</a>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+function copiarTexto(idElemento, boton) {
+    const texto = document.getElementById(idElemento).innerText;
+    navigator.clipboard.writeText(texto).then(() => {
+        const originalText = boton.innerText;
+        boton.innerText = "¡Copiado!";
+        setTimeout(() => { boton.innerText = originalText; }, 2000);
+    });
+}
+
+function mostrarVistaPrevia(input, previewId) {
+    const file = input.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const container = document.getElementById(previewId);
+            const img = container.querySelector('img');
+            img.src = e.target.result;
+            container.style.display = 'block';
+            container.previousElementSibling.style.display = 'none'; // Ocultar texto de carga
+        }
+        reader.readAsDataURL(file);
+    }
+}
+
+function manejarPegado(event, previewId, inputId) {
+    const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") !== -1) {
+            const blob = items[i].getAsFile();
+            const container = document.getElementById(previewId);
+            const img = container.querySelector('img');
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                img.src = e.target.result;
+                container.style.display = 'block';
+                container.previousElementSibling.style.display = 'none';
+            }
+            reader.readAsDataURL(blob);
+
+            // Asignar al input file si es posible
+            const dataTransfer = new DataTransfer();
+            dataTransfer.items.add(blob);
+            document.getElementById(inputId).files = dataTransfer.files;
+            
+            event.preventDefault();
+            break;
+        }
+    }
+}
+
+function removerImagen(previewId, inputId) {
+    const container = document.getElementById(previewId);
+    const input = document.getElementById(inputId);
+    input.value = "";
+    container.style.display = 'none';
+    container.previousElementSibling.style.display = 'block';
+}
+
+function enviarPedidoWhatsApp(servicio, idInput) {
+    const input = document.getElementById(idInput);
+    const valor = input.value.trim();
+    if (!valor) {
+        alert("Por favor, ingresa tu correo antes de continuar.");
+        input.focus();
+        return;
+    }
+    const mensaje = `Hola, quiero solicitar el servicio: *${servicio}*. Mi correo es: ${valor}`;
+    const url = `https://wa.me/584262753916?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+}
+
+function enviarComprobanteConImagenWhatsApp(servicio, idInputRef, idImgPreview) {
+    const inputRef = document.getElementById(idInputRef);
+    const referencia = inputRef.value.trim();
+    const imgElement = document.getElementById(idImgPreview);
+    
+    if (!referencia) {
+        alert("Por favor, ingresa el número de referencia o datos de tu pago.");
+        inputRef.focus();
+        return;
+    }
+
+    let mensaje = `Hola, envío el comprobante de pago para *${servicio}*.\nReferencia / Datos: ${referencia}`;
+    
+    // Si cargó imagen, le avisamos al cliente que la imagen se ha guardado localmente para que la pegue en el chat
+    if (imgElement.src && imgElement.src.startsWith('data:image')) {
+        mensaje += `\n*(Ya tengo mi captura lista)*`;
+        
+        // Copiar la imagen automáticamente al portapapeles para facilitar que el usuario la pegue en WhatsApp
+        fetch(imgElement.src)
+            .then(res => res.blob())
+            .then(blob => {
+                try {
+                    navigator.clipboard.write([new ClipboardItem({[blob.type]: blob})]);
+                } catch(err) {
+                    console.log("No se pudo copiar automáticamente al portapapeles, pero se enviará el texto.");
+                }
+            });
+    }
+
+    const url = `https://wa.me/584262753916?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+}
+</script>
+
+<style>
+/* --- ESTILOS GENERALES Y ESTRUCTURA --- */
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #0d0d0d; font-family: 'Segoe UI', Roboto, sans-serif; }
+.full-screen-container { display: flex; justify-content: center; align-items: center; width: 100vw; min-height: 100vh; box-sizing: border-box; padding: 15px; background: radial-gradient(circle at center, #1a1a1a 0%, #080808 100%); }
+.streaming-widget-full { background-color: #141414; border: 1px solid #262626; border-radius: 16px; padding: 20px; width: 100%; max-width: 520px; color: #ffffff; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8); box-sizing: border-box; }
+.widget-header { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.red { background-color: #ff5f56; } .dot.yellow { background-color: #ffbd2e; } .dot.green { background-color: #27c93f; }
+.widget-header h3 { font-size: 15px; margin: 0; font-weight: 600; color: #e5e5e5; margin-left: 5px; }
+.widget-subtitle { font-size: 12px; color: #999; margin-bottom: 16px; }
+.widget-buttons { display: flex; flex-direction: column; gap: 14px; }
+.service-group { display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.15); }
+
+.pana-bg-image { background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1200&auto=format&fit=crop'); background-size: cover; background-position: center; }
+.stella-bg-image { background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop'); background-size: cover; background-position: center; }
+
+/* Contenedor de sub-botones */
+.sub-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 8px;
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    margin-top: 4px;
+}
+
+/* Cajas desplegables con FONDO BLANCO y LETRAS NEGRAS */
+.info-box {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 6px;
+    border: 1px solid #cccccc;
+    overflow: hidden;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.info-box[open] {
+    background: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Cabecera del desplegable con texto negro */
+.info-box summary.icon-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    color: #000000 !important;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+.info-box summary::-webkit-details-marker { display: none; }
+
+.info-box .btn-text strong {
+    color: #000000 !important;
+}
+.info-box .btn-text small {
+    color: #333333 !important;
+    opacity: 0.9;
+}
+
+/* Flecha animada sutil oscura */
+.arrow {
+    margin-left: auto;
+    font-size: 10px;
+    color: #444444;
+    transition: transform 0.2s ease;
+}
+.info-box[open] .arrow {
+    transform: rotate(180deg);
+}
+
+/* Contenido interno desplegado */
+.dropdown-content {
+    padding: 8px 12px 12px 12px;
+    font-size: 11px;
+    color: #222222 !important;
+    background: #f7f7f7 !important;
+    border-top: 1px solid #dddddd;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Bordes laterales distintivos para cada opción */
+.payment-box { border-left: 4px solid #d48806; }
+.receipt-box { border-left: 4px solid #6f42c1; }
+.account-box { border-left: 4px solid #1f6feb; }
+.screen-box { border-left: 4px solid #238636; }
+
+/* Zona de carga y pegado de imagen */
+.upload-area {
+    border: 2px dashed #b0b0b0;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 4px;
+    outline: none;
+}
+.upload-area:focus {
+    border-color: #6f42c1;
+}
+.upload-prompt span {
+    font-size: 10px;
+    color: #555555;
+    line-height: 1.3;
+}
+.preview-container {
+    position: relative;
+    max-height: 90px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.preview-container img {
+    width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+}
+.remove-img {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 9px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+/* Botones principales de servicios */
+.stream-btn { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 6px; text-decoration: none; color: #ffffff; transition: transform 0.2s ease; cursor: pointer; width: 100%; box-sizing: border-box; }
+.stream-btn:hover { transform: translateY(-1px); }
+
+/* PanaXtreaming en Verde Fosforescente */
+.pana-btn { background-color: #39ff14 !important; color: #000000 !important; }
+.pana-btn .btn-text small { opacity: 0.9; color: #111111; }
+
+/* Stella TV en Rosa Viejo */
+.stella-btn { background-color: #b76e79 !important; color: #ffffff !important; }
+
+.stream-btn .icon, .icon-text .icon { font-size: 18px; }
+.btn-text { display: flex; flex-direction: column; line-height: 1.2; }
+.btn-text strong { font-size: 13px; }
+.btn-text small { font-size: 10px; opacity: 0.85; }
+
+/* Elementos de formulario */
+.input-field { 
+    width: 100%; 
+    padding: 7px 10px; 
+    background: #ffffff !important; 
+    border: 1px solid #cccccc !important; 
+    border-radius: 6px; 
+    color: #000000 !important; 
+    font-size: 11px; 
+    box-sizing: border-box; 
+    outline: none;
+    transition: border-color 0.2s;
+}
+.input-field:focus {
+    border-color: #1f6feb !important;
+}
+
+.copy-row { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 6px 10px; border-radius: 6px; border: 1px solid #dddddd; color: #000000; }
+.copy-btn { background: #e0e0e0; color: #000; border: none; padding: 3px 8px; border-radius: 4px; font-size: 10px; cursor: pointer; transition: background 0.2s; }
+.copy-btn:hover { background: #cccccc; }
+.text-center-btn { text-align: center; margin-top: 6px; }
+.action-whatsapp { display: inline-block; padding: 6px 14px; border-radius: 6px; color: white; text-decoration: none; font-size: 11px; font-weight: 600; text-align: center; transition: opacity 0.2s; cursor: pointer; }
+.action-whatsapp:hover { opacity: 0.9; }
+
+/* Botones internos fijos */
+.pana-btn-fixed { background-color: #2ebc10; color: #ffffff; }
+.stella-btn-fixed { background-color: #b76e79; color: #ffffff; }
+</style>

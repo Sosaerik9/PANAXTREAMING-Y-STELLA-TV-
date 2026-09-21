@@ -365,6 +365,10 @@
             font-size: 13px;
         }
 
+        .history-item.stella {
+            border-left-color: #e50914;
+        }
+
         .history-header {
             display: flex;
             justify-content: space-between;
@@ -557,8 +561,8 @@
 
     <!-- Script conectado a tu Google Sheet personal -->
     <script>
-        // ⚠️ REEMPLAZA ESTO CON LA URL DE TU APLICACIÓN WEB DE APPS SCRIPT (TERMINADA EN /exec)
-        const GOOGLE_SCRIPT_URL = "PEGAR_AQUI_TU_URL_DE_APPS_SCRIPT";
+        // URL corregida terminada en /exec
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyEqeqS6zVr8y_LjlHnvELBZV1p_ZFsyA4T3QaQHtg/exec";
 
         function abrirModalLogin() {
             document.getElementById('loginModal').style.display = 'flex';
@@ -592,7 +596,7 @@
             };
 
             // Envía los datos automáticamente a tu Google Sheet mediante el Web App
-            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "PEGAR_AQUI_TU_URL_DE_APPS_SCRIPT") {
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/TU_URL_DE_APPS_SCRIPT_AQUI/exec") {
                 try {
                     await fetch(GOOGLE_SCRIPT_URL, {
                         method: "POST",

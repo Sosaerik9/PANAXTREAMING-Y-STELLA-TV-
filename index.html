@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Entretenimiento - Panel Principal</title>
+    <title>Centro de Entretenimiento - Cine & Streaming</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         body {
-            /* Fondo de sala de cine / auditorio oscuro con iluminación ambiental */
-            background-color: #080808;
+            background-color: #050505;
             background-image: 
-                radial-gradient(circle at center, rgba(35, 35, 35, 0.6) 0%, rgba(3, 3, 3, 0.98) 100%),
-                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+                linear-gradient(135deg, rgba(0, 0, 0, 0.82) 0%, rgba(5, 5, 8, 0.9) 100%),
+                radial-gradient(circle at 50% 20%, rgba(229, 9, 20, 0.25) 0%, transparent 60%),
+                url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -28,66 +31,150 @@
             overflow-x: hidden;
         }
 
-        /* Textos decorativos laterales de fondo (estilo cine) */
+        .top-login-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(20, 20, 25, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            z-index: 10;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .top-login-btn:hover {
+            border-color: #e50914;
+            background: rgba(30, 30, 40, 0.95);
+            box-shadow: 0 0 12px rgba(229, 9, 20, 0.5);
+        }
+
+        /* Modal de Inicio de Sesión / Registro */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 380px;
+            background-color: rgba(14, 14, 18, 0.95);
+            border-radius: 14px;
+            padding: 26px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(229, 9, 20, 0.3);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 18px;
+            color: #aaa;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            color: #ff334b;
+            margin-bottom: 18px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
         .bg-text-left, .bg-text-right {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%) rotate(-90deg);
-            font-size: 6vw;
             font-weight: 900;
-            letter-spacing: 10px;
-            opacity: 0.12;
+            letter-spacing: 18px;
+            opacity: 0.22;
             pointer-events: none;
             white-space: nowrap;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(229, 9, 20, 0.5);
         }
 
         .bg-text-left {
             left: -5vw;
             color: #2ecc71;
+            font-size: 2.8vw;
+            transform: translateY(-50%) rotate(-90deg);
         }
 
         .bg-text-right {
             right: -5vw;
-            color: #e74c3c;
+            color: #e50914;
+            font-size: 6vw;
             transform: translateY(-50%) rotate(90deg);
         }
 
         .container {
             width: 100%;
             max-width: 480px;
-            background-color: rgba(18, 18, 18, 0.92);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            z-index: 1;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            background-color: rgba(12, 12, 14, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 26px;
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.95), 
+                0 0 40px rgba(229, 9, 20, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            z-index: 2;
+            margin: 20px 0;
         }
 
         .header-title {
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 15px;
+            font-size: 15px;
+            color: #ff334b;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            text-shadow: 0 2px 8px rgba(229, 9, 20, 0.6);
         }
 
-        /* Tarjetas Principales de Servicio */
         .card-main-pana {
             background: linear-gradient(135deg, #2ecc71, #27ae60);
-            border-radius: 8px;
-            padding: 15px;
+            border-radius: 10px;
+            padding: 16px;
             margin-bottom: 15px;
             color: #000;
             font-weight: bold;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
         }
 
         .card-main-stella {
-            background: linear-gradient(135deg, #c0392b, #962d22);
-            border-radius: 8px;
-            padding: 15px;
+            background: linear-gradient(135deg, #e50914, #b80710);
+            border-radius: 10px;
+            padding: 16px;
             margin-top: 25px;
             margin-bottom: 15px;
             color: #fff;
@@ -95,26 +182,27 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
         }
 
         .icon-text {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        /* Acordeones / Desplegables Funcionales */
         .dropdown {
-            background-color: #242424;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #333;
+            background-color: rgba(20, 20, 24, 0.88);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
             transition: border-color 0.3s ease;
         }
 
         .dropdown-header {
-            padding: 14px 15px;
+            padding: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -127,8 +215,8 @@
 
         .dropdown-header span small {
             display: block;
-            font-size: 12px;
-            color: #aaa;
+            font-size: 11px;
+            color: #ddd;
             font-weight: normal;
             margin-top: 3px;
         }
@@ -144,9 +232,9 @@
         }
 
         .dropdown-content {
-            padding: 15px;
-            background-color: #1a1a1a;
-            border-top: 1px solid #333;
+            padding: 16px;
+            background-color: rgba(10, 10, 12, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             display: none;
         }
 
@@ -155,11 +243,11 @@
         }
 
         .sub-option {
-            background-color: #222;
-            padding: 10px 12px;
-            border-radius: 6px;
+            background-color: rgba(26, 26, 32, 0.9);
+            padding: 12px;
+            border-radius: 8px;
             margin-bottom: 10px;
-            border: 1px solid #333;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .sub-option-title {
@@ -174,57 +262,159 @@
 
         .sub-option-desc {
             font-size: 11px;
-            color: #aaa;
+            color: #ccc;
         }
 
         .dropdown-content p {
             font-size: 13px;
-            color: #ccc;
-            margin-bottom: 10px;
+            color: #eee;
+            margin-bottom: 8px;
         }
 
         .input-field {
             width: 100%;
-            padding: 12px;
+            padding: 13px;
             border-radius: 6px;
-            border: 1px solid #444;
-            background-color: #121212;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background-color: rgba(15, 15, 18, 0.95);
             color: #fff;
             margin-bottom: 12px;
             font-size: 14px;
         }
 
+        .input-field:focus {
+            border-color: #e50914;
+            outline: none;
+            box-shadow: 0 0 12px rgba(229, 9, 20, 0.6);
+        }
+
         select.input-field option {
-            background-color: #121212;
+            background-color: #141418;
+            color: #fff;
+        }
+
+        input[type="file"].input-field {
+            padding: 10px;
+            color: #ddd;
+            background-color: rgba(22, 22, 28, 0.95);
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button {
+            background-color: #444;
+            color: white;
+            padding: 7px 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background-color: #e50914;
             color: #fff;
         }
 
         .btn-comenzar {
             width: 100%;
-            background-color: #e74c3c;
+            background: linear-gradient(135deg, #ff1e2b, #b80710);
             color: white;
             border: none;
-            padding: 12px;
+            padding: 15px;
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             transition: background 0.2s;
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+            margin-top: 5px;
         }
 
         .btn-comenzar:hover {
-            background-color: #c0392b;
+            background: linear-gradient(135deg, #ff3340, #d90a16);
+        }
+
+        .btn-comenzar:active {
+            transform: scale(0.98);
+        }
+
+        /* Estilos para la sección de Historial de Cliente */
+        .client-dashboard {
+            display: none;
+        }
+
+        .user-welcome-card {
+            background: rgba(25, 25, 32, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .history-item {
+            background: rgba(18, 18, 24, 0.95);
+            border-left: 4px solid #2ecc71;
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #fff;
+        }
+
+        .history-details {
+            font-size: 11px;
+            color: #bbb;
+            line-height: 1.4;
+        }
+
+        .badge-status {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <!-- Marcas de agua laterales de fondo (Estilo Cine) -->
+    <!-- Botón superior derecho para Iniciar Sesión / Registrarse -->
+    <button class="top-login-btn" id="topBtnAction" onclick="abrirModalLogin()">🔑 Iniciar Sesión</button>
+
+    <!-- Modal de Inicio de Sesión / Registro -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="cerrarModalLogin()">&times;</button>
+            <div class="modal-title">🔐 Registro / Acceso de Clientes</div>
+            <p style="font-size: 12px; color: #ccc; margin-bottom: 14px;">Ingresa tu correo real y contraseña para registrarte o entrar:</p>
+            
+            <input type="email" id="login-usuario" class="input-field" placeholder="Correo electrónico real">
+            <input type="password" id="login-clave" class="input-field" placeholder="Contraseña">
+            
+            <button class="btn-comenzar" onclick="procesarLoginRegistro()">Entrar o Registrarme</button>
+        </div>
+    </div>
+
+    <!-- Marcas de agua laterales -->
     <div class="bg-text-left">PANAXSTREAMING</div>
     <div class="bg-text-right">STELLA TV</div>
 
-    <div class="container">
-        <div class="header-title">Selecciona tu servicio de streaming favorito:</div>
+    <!-- CONTENEDOR PRINCIPAL DE PEDIDOS (INICIO) -->
+    <div class="container" id="mainStoreView">
+        <div class="header-title">🎬 Centro de Entretenimiento 🎬</div>
 
         <!-- ================= PANAXSTREAMING ================= -->
         <div class="card-main-pana">
@@ -238,37 +428,17 @@
             <span>▲</span>
         </div>
 
-        <div class="dropdown">
-            <div class="dropdown-header">
-                <span>💳 Datos de Pago <small>Ver Pago Móvil Provincial</small></span>
-                <span class="arrow">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <p><strong>Banco:</strong> Provincial</p>
-                <p><strong>Pago Móvil:</strong> 0412-XXXXXXX</p>
-                <p><strong>C.I:</strong> V-XXXXXXXX</p>
-            </div>
-        </div>
-
-        <div class="dropdown">
-            <div class="dropdown-header">
-                <span>📁 Enviar Comprobante <small>Adjunta o pega tu captura</small></span>
-                <span class="arrow">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <p>Sube tu capture de pago para validar tu suscripción rápidamente.</p>
-                <input type="file" class="input-field" style="padding: 8px;">
-            </div>
-        </div>
-
-        <!-- BOTÓN ÚNICO PANAXTREAMING -->
         <div class="dropdown active">
-            <div class="dropdown-header" style="color: #f39c12;">
-                <span>⚡ Planes y Contenido Ilimitado <small style="color: #f1c40f;">Cuentas completas, pantallas y acceso</small></span>
+            <div class="dropdown-header" style="color: #2ecc71;">
+                <span>⚡ Planes, Pago Móvil y Pedido <small style="color: #eee;">Banco Provincial y activación</small></span>
                 <span class="arrow">▼</span>
             </div>
             <div class="dropdown-content" style="display: block;">
-                <!-- Cuenta Completa (8$) -->
+                <p><strong>Banco:</strong> Provincial</p>
+                <p><strong>Pago Móvil:</strong> 0412-XXXXXXX</p>
+                <p><strong>C.I:</strong> V-XXXXXXXX</p>
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 12px 0;">
+
                 <div class="sub-option">
                     <div class="sub-option-title">
                         <span>📺 Cuenta Completa</span> 
@@ -277,7 +447,6 @@
                     <div class="sub-option-desc">Acceso total y estabilidad garantizada.</div>
                 </div>
 
-                <!-- 1 Pantalla (4$) -->
                 <div class="sub-option">
                     <div class="sub-option-title">
                         <span>📺 1 Pantalla</span> 
@@ -286,18 +455,22 @@
                     <div class="sub-option-desc">Perfil individual en tu dispositivo preferido.</div>
                 </div>
 
-                <!-- Sugerencia de plan y correo -->
-                <p style="margin-top: 15px;">¿Quieres entretenimiento ya? Ingresa tu email y selecciona el plan que deseas adquirir:</p>
-                <input type="email" id="email-pana" class="input-field" placeholder="Tu correo electrónico">
+                <p style="margin-top: 15px;">Completa los datos y adjunta la imagen de tu pago:</p>
+                
                 <select id="plan-pana" class="input-field">
-                    <option value="" disabled selected>Selecciona el plan que deseas adquirir</option>
+                    <option value="" disabled selected>1. Selecciona el plan que deseas adquirir</option>
                     <option value="Cuenta Completa PanaXtreaming (8$ a tasa BCV)">Cuenta Completa PanaXtreaming - 8$</option>
                     <option value="1 Pantalla PanaXtreaming (4$ a tasa BCV)">1 Pantalla PanaXtreaming - 4$</option>
                 </select>
-                <button class="btn-comenzar" onclick="enviarWhatsApp('pana')">Comenzar &gt;</button>
+
+                <input type="email" id="email-pana" class="input-field" placeholder="2. Ingresa tu correo electrónico">
+                
+                <label style="font-size: 11px; color: #ddd; display: block; margin-bottom: 5px;">3. Adjunta la imagen del comprobante de pago:</label>
+                <input type="file" id="file-pana" class="input-field" accept="image/*">
+
+                <button class="btn-comenzar" onclick="enviarWhatsApp('pana')">Comenzar Pedido por WhatsApp &gt;</button>
             </div>
         </div>
-
 
         <!-- ================= STELLA TV ================= -->
         <div class="card-main-stella">
@@ -312,96 +485,205 @@
         </div>
 
         <div class="dropdown">
-            <div class="dropdown-header">
-                <span>💳 Datos de Pago <small>Ver Pago Móvil Provincial</small></span>
+            <div class="dropdown-header" style="color: #ff4d4d;">
+                <span>⚡ Planes, Pago Móvil y Pedido <small style="color: #eee;">Banco Provincial y activación</small></span>
                 <span class="arrow">▼</span>
             </div>
             <div class="dropdown-content">
                 <p><strong>Banco:</strong> Provincial</p>
                 <p><strong>Pago Móvil:</strong> 0412-XXXXXXX</p>
-            </div>
-        </div>
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.15); margin: 12px 0;">
 
-        <div class="dropdown">
-            <div class="dropdown-header">
-                <span>📁 Enviar Comprobante <small>Adjunta o pega tu captura</small></span>
-                <span class="arrow">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <p>Adjunta el comprobante de pago de tu servicio de Stella TV.</p>
-                <input type="file" class="input-field" style="padding: 8px;">
-            </div>
-        </div>
-
-        <!-- BOTÓN ÚNICO STELLA TV -->
-        <div class="dropdown">
-            <div class="dropdown-header" style="color: #f39c12;">
-                <span>⚡ Planes y Contenido Ilimitado <small style="color: #f1c40f;">Cuentas completas, pantallas y acceso</small></span>
-                <span class="arrow">▼</span>
-            </div>
-            <div class="dropdown-content">
-                <!-- Cuenta Completa Stella (10$) -->
                 <div class="sub-option">
                     <div class="sub-option-title">
                         <span>📺 Cuenta Completa</span> 
-                        <span style="color: #e74c3c;">10$ (A tasa BCV)</span>
+                        <span style="color: #ff4d4d;">10$ (A tasa BCV)</span>
                     </div>
                     <div class="sub-option-desc">Toda la programación en vivo y deportes sin límites.</div>
                 </div>
 
-                <!-- 1 Pantalla Stella (6$) -->
                 <div class="sub-option">
                     <div class="sub-option-title">
                         <span>📺 1 Pantalla</span> 
-                        <span style="color: #e74c3c;">6$ (A tasa BCV)</span>
+                        <span style="color: #ff4d4d;">6$ (A tasa BCV)</span>
                     </div>
                     <div class="sub-option-desc">Acceso a tu pantalla para televisión en vivo.</div>
                 </div>
 
-                <!-- Sugerencia de plan y correo -->
-                <p style="margin-top: 15px;">Ingresa tu email y selecciona el plan que deseas adquirir para activar tu servicio:</p>
-                <input type="email" id="email-stella" class="input-field" placeholder="Tu correo electrónico">
+                <p style="margin-top: 15px;">Completa los datos y adjunta la imagen de tu pago:</p>
+                
                 <select id="plan-stella" class="input-field">
-                    <option value="" disabled selected>Selecciona el plan que deseas adquirir</option>
+                    <option value="" disabled selected>1. Selecciona el plan que deseas adquirir</option>
                     <option value="Cuenta Completa Stella TV (10$ a tasa BCV)">Cuenta Completa Stella TV - 10$</option>
                     <option value="1 Pantalla Stella TV (6$ a tasa BCV)">1 Pantalla Stella TV - 6$</option>
                 </select>
-                <button class="btn-comenzar" onclick="enviarWhatsApp('stella')">Comenzar &gt;</button>
+
+                <input type="email" id="email-stella" class="input-field" placeholder="2. Ingresa tu correo electrónico">
+                
+                <label style="font-size: 11px; color: #ddd; display: block; margin-bottom: 5px;">3. Adjunta la imagen del comprobante de pago:</label>
+                <input type="file" id="file-stella" class="input-field" accept="image/*">
+
+                <button class="btn-comenzar" onclick="enviarWhatsApp('stella')">Comenzar Pedido por WhatsApp &gt;</button>
             </div>
         </div>
 
     </div>
 
-    <!-- Script de funcionalidad para acordeones y redirección a WhatsApp -->
-    <script>
-        // Función para enviar los datos por WhatsApp
-        function enviarWhatsApp(servicio) {
-            let email = document.getElementById(`email-${servicio}`).value.trim();
-            let selectPlan = document.getElementById(`plan-${servicio}`);
-            let plan = selectPlan.value;
+    <!-- CONTENEDOR DEL PANEL DE HISTORIAL DE COMPRAS (DASHBOARD CLIENTE) -->
+    <div class="container client-dashboard" id="clientDashboardView">
+        <div class="header-title">📊 Mi Historial de Servicios</div>
+        
+        <div class="user-welcome-card">
+            <h3 id="clientNameDisplay" style="font-size: 15px; color: #2ecc71; margin-bottom: 4px;">Bienvenido</h3>
+            <p style="font-size: 11px; color: #aaa;" id="clientEmailDisplay">correo@cliente.com</p>
+        </div>
 
-            // Validación sencilla antes de redirigir
-            if (!email) {
-                alert("Por favor, ingresa tu correo electrónico.");
+        <p style="font-size: 12px; color: #ddd; margin-bottom: 12px; font-weight: bold;">Tus adquisiciones y renovaciones:</p>
+
+        <div class="history-item">
+            <div class="history-header">
+                <span>🟢 Registro General / Servicio</span>
+                <span class="badge-status">Activo</span>
+            </div>
+            <div class="history-details">
+                📅 <strong>Fecha de Registro:</strong> <span id="regDate">Septiembre, 2026</span><br>
+                🔄 <strong>Estado en Google Drive:</strong> Sincronizado<br>
+                ⚡ <strong>Acceso verificado</strong>
+            </div>
+        </div>
+
+        <button class="btn-comenzar" style="background: #333; margin-top: 15px;" onclick="cerrarSesion()">Cerrar Sesión / Volver</button>
+    </div>
+
+    <!-- Script conectado a tu Google Sheet personal -->
+    <script>
+        // ⚠️ REEMPLAZA ESTO CON LA URL DE TU APLICACIÓN WEB DE APPS SCRIPT (TERMINADA EN /exec)
+        const GOOGLE_SCRIPT_URL = "PEGAR_AQUI_TU_URL_DE_APPS_SCRIPT";
+
+        function abrirModalLogin() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function cerrarModalLogin() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        async function procesarLoginRegistro() {
+            let email = document.getElementById('login-usuario').value.trim().toLowerCase();
+            let clave = document.getElementById('login-clave').value.trim();
+
+            let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexEmail.test(email)) {
+                alert("Por favor, ingresa un correo electrónico real y válido.");
+                return;
+            }
+
+            if (!clave || clave.length < 6) {
+                alert("Por favor, ingresa una contraseña segura (mínimo 6 caracteres).");
+                return;
+            }
+
+            let datosRegistro = {
+                correo: email,
+                clave: clave,
+                servicio: "Registro / Login Web",
+                plan: "Acceso Cliente",
+                estado: "Registrado"
+            };
+
+            // Envía los datos automáticamente a tu Google Sheet mediante el Web App
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL !== "PEGAR_AQUI_TU_URL_DE_APPS_SCRIPT") {
+                try {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: "POST",
+                        mode: "no-cors",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(datosRegistro)
+                    });
+                } catch (error) {
+                    console.log("Error al sincronizar con Google Drive:", error);
+                }
+            }
+
+            let baseDeDatosClientes = JSON.parse(localStorage.getItem('panax_clientes')) || {};
+            if (!baseDeDatosClientes[email]) {
+                baseDeDatosClientes[email] = {
+                    clave: clave,
+                    fechaRegistro: new Date().toLocaleDateString()
+                };
+                localStorage.setItem('panax_clientes', JSON.stringify(baseDeDatosClientes));
+                alert("¡Cuenta registrada con éxito y enviada a tu Google Drive!");
+            } else {
+                if (baseDeDatosClientes[email].clave !== clave) {
+                    alert("Contraseña incorrecta para este correo.");
+                    return;
+                }
+                alert("¡Bienvenido de nuevo!");
+            }
+
+            document.getElementById('clientNameDisplay').innerText = `Cliente: ${email.split('@')[0]}`;
+            document.getElementById('clientEmailDisplay').innerText = email;
+            document.getElementById('regDate').innerText = baseDeDatosClientes[email].fechaRegistro;
+
+            cerrarModalLogin();
+            document.getElementById('mainStoreView').style.display = 'none';
+            document.getElementById('clientDashboardView').style.display = 'block';
+
+            let topBtn = document.getElementById('topBtnAction');
+            topBtn.innerText = "👤 Mi Panel";
+            topBtn.onclick = function() {
+                alert("Ya te encuentras en tu panel de cliente.");
+            };
+        }
+
+        function cerrarSesion() {
+            document.getElementById('clientDashboardView').style.display = 'none';
+            document.getElementById('mainStoreView').style.display = 'block';
+
+            let topBtn = document.getElementById('topBtnAction');
+            topBtn.innerText = "🔑 Iniciar Sesión";
+            topBtn.onclick = abrirModalLogin;
+
+            document.getElementById('login-usuario').value = '';
+            document.getElementById('login-clave').value = '';
+        }
+
+        function enviarWhatsApp(servicio) {
+            let selectPlan = document.getElementById(`plan-${servicio}`);
+            let emailInput = document.getElementById(`email-${servicio}`);
+            let fileInput = document.getElementById(`file-${servicio}`);
+
+            let plan = selectPlan.value;
+            let email = emailInput.value.trim().toLowerCase();
+            let tieneArchivo = fileInput.files.length > 0;
+
+            let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexEmail.test(email)) {
+                alert("Por favor, ingresa un correo electrónico real y válido en el formulario.");
+                emailInput.focus();
                 return;
             }
             if (!plan) {
                 alert("Por favor, selecciona el plan que deseas adquirir.");
+                selectPlan.focus();
+                return;
+            }
+            if (!tieneArchivo) {
+                alert("Por favor, adjunta la imagen del comprobante o captura de pago.");
+                fileInput.focus();
                 return;
             }
 
-            // Número configurado: 04262753916 -> En formato internacional de Venezuela: +584262753916
+            let nombreServicio = (servicio === 'pana') ? 'PanaXtreaming' : 'Stella TV';
+            let nombreArchivo = fileInput.files[0].name;
             let numeroWhatsApp = "584262753916";
 
-            // Crear el mensaje formateado
-            let mensaje = `Hola, quiero adquirir un servicio:%0A- *Servicio:* ${servicio === 'pana' ? 'PanaXtreaming' : 'Stella TV'}%0A- *Plan:* ${plan}%0A- *Correo:* ${email}`;
+            let mensaje = `Hola, quiero activar mi servicio:%0A- *Servicio:* ${nombreServicio}%0A- *Plan:* ${plan}%0A- *Correo:* ${email}%0A- *Comprobante:* ${nombreArchivo} (Imagen seleccionada, adjuntando en el chat)`;
 
-            // Redirigir a la API de WhatsApp
             let url = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
             window.open(url, '_blank');
         }
 
-        // Funcionalidad de los acordeones desplegables
         const headers = document.querySelectorAll('.dropdown-header');
 
         headers.forEach(header => {

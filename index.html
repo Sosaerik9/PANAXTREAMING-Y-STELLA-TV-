@@ -590,7 +590,7 @@
             }
 
             // Envío de datos al Google Drive (Google Sheet) con la URL configurada
-            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.includes("script.google.com")) {
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycbxmMI5f7TrU2cJqNlPvLMfWGpL5nIaridMbNvOstYihA_CrbZjgy3b4N_hzfSUNcSKL/exec")) {
                 let params = `?correo=${encodeURIComponent(email)}&cedula=${encodeURIComponent(cedula)}&clave=${encodeURIComponent(clave)}&servicio=Registro%20Web&plan=Acceso%20Cliente&estado=Registrado`;
                 let iframe = document.createElement('iframe');
                 iframe.style.display = 'none';

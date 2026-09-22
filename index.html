@@ -356,6 +356,12 @@
             text-align: center;
         }
 
+        .history-list {
+            max-height: 250px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
         .history-item {
             background: rgba(18, 18, 24, 0.95);
             border-left: 4px solid #2ecc71;
@@ -363,10 +369,6 @@
             padding: 14px;
             margin-bottom: 12px;
             font-size: 13px;
-        }
-
-        .history-item.stella {
-            border-left-color: #e50914;
         }
 
         .history-header {
@@ -396,17 +398,18 @@
 <body>
 
     <!-- Botón superior derecho para Iniciar Sesión / Registrarse -->
-    <button class="top-login-btn" id="topBtnAction" onclick="abrirModalLogin()">🔑 Iniciar Sesión</button>
+    <button class="top-login-btn" id="topBtnAction" onclick="abrirModalLogin()">🔑 Iniciar Sesión / Registrarse</button>
 
     <!-- Modal de Inicio de Sesión / Registro -->
     <div class="modal-overlay" id="loginModal">
         <div class="modal-container">
             <button class="modal-close" onclick="cerrarModalLogin()">&times;</button>
             <div class="modal-title">🔐 Registro / Acceso de Clientes</div>
-            <p style="font-size: 12px; color: #ccc; margin-bottom: 14px;">Ingresa tu correo real y contraseña para registrarte o entrar:</p>
+            <p style="font-size: 12px; color: #ccc; margin-bottom: 14px;">Ingresa tus datos para registrarte o entrar:</p>
             
             <input type="email" id="login-usuario" class="input-field" placeholder="Correo electrónico real">
-            <input type="password" id="login-clave" class="input-field" placeholder="Contraseña">
+            <input type="text" id="login-cedula" class="input-field" placeholder="Número de Cédula (Ej: V-12345678)">
+            <input type="password" id="login-clave" class="input-field" placeholder="Contraseña (mínimo 6 caracteres)">
             
             <button class="btn-comenzar" onclick="procesarLoginRegistro()">Entrar o Registrarme</button>
         </div>
@@ -540,20 +543,14 @@
         <div class="user-welcome-card">
             <h3 id="clientNameDisplay" style="font-size: 15px; color: #2ecc71; margin-bottom: 4px;">Bienvenido</h3>
             <p style="font-size: 11px; color: #aaa;" id="clientEmailDisplay">correo@cliente.com</p>
+            <p style="font-size: 11px; color: #ddd;" id="clientCedulaDisplay">Cédula: N/A</p>
         </div>
 
-        <p style="font-size: 12px; color: #ddd; margin-bottom: 12px; font-weight: bold;">Tus adquisiciones y renovaciones:</p>
+        <p style="font-size: 12px; color: #ddd; margin-bottom: 12px; font-weight: bold;">Tus adquisiciones, compras y renovaciones:</p>
 
-        <div class="history-item">
-            <div class="history-header">
-                <span>🟢 Registro General / Servicio</span>
-                <span class="badge-status">Activo</span>
-            </div>
-            <div class="history-details">
-                📅 <strong>Fecha de Registro:</strong> <span id="regDate">Septiembre, 2026</span><br>
-                🔄 <strong>Estado en Google Drive:</strong> Sincronizado<br>
-                ⚡ <strong>Acceso verificado</strong>
-            </div>
+        <!-- Contenedor donde se cargará dinámicamente el historial de compras -->
+        <div class="history-list" id="clientHistoryContainer">
+            <!-- Los movimientos se pintarán aquí automáticamente -->
         </div>
 
         <button class="btn-comenzar" style="background: #333; margin-top: 15px;" onclick="cerrarSesion()">Cerrar Sesión / Volver</button>
@@ -561,7 +558,7 @@
 
     <!-- Script conectado a tu Google Sheet personal -->
     <script>
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxYlyPpxXWP1LhqhE90XmFsGdoogU2UfUZMSMXPZcFUAn7drmMXzUhVI59QA7zjpAhI/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbXWyD176MXTR4CYELGucRkFzp23RXruBDJmdfw9FBXMo0e9Gn_MeSx1_bUoZycQo8/exec";
 
         function abrirModalLogin() {
             document.getElementById('loginModal').style.display = 'flex';
@@ -573,6 +570,7 @@
 
         async function procesarLoginRegistro() {
             let email = document.getElementById('login-usuario').value.trim().toLowerCase();
+            let cedula = document.getElementById('login-cedula').value.trim();
             let clave = document.getElementById('login-clave').value.trim();
 
             let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -581,14 +579,19 @@
                 return;
             }
 
+            if (!cedula) {
+                alert("Por favor, ingresa tu número de cédula.");
+                return;
+            }
+
             if (!clave || clave.length < 6) {
                 alert("Por favor, ingresa una contraseña segura (mínimo 6 caracteres).");
                 return;
             }
 
-            // Envío directo infalible a Google Sheets mediante iframe invisible
+            // Envío de datos al Google Drive (Google Sheet) con la URL configurada
             if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.includes("script.google.com")) {
-                let params = `?correo=${encodeURIComponent(email)}&clave=${encodeURIComponent(clave)}&servicio=Registro%20Web&plan=Acceso%20Cliente&estado=Registrado`;
+                let params = `?correo=${encodeURIComponent(email)}&cedula=${encodeURIComponent(cedula)}&clave=${encodeURIComponent(clave)}&servicio=Registro%20Web&plan=Acceso%20Cliente&estado=Registrado`;
                 let iframe = document.createElement('iframe');
                 iframe.style.display = 'none';
                 iframe.src = GOOGLE_SCRIPT_URL + params;
@@ -599,25 +602,59 @@
                 }, 1000);
             }
 
+            // Guardar o verificar en LocalStorage del cliente con su historial de movimientos
             let baseDeDatosClientes = JSON.parse(localStorage.getItem('panax_clientes')) || {};
+            let fechaActual = new Date().toLocaleDateString();
+
             if (!baseDeDatosClientes[email]) {
                 baseDeDatosClientes[email] = {
+                    cedula: cedula,
                     clave: clave,
-                    fechaRegistro: new Date().toLocaleDateString()
+                    historial: [
+                        { fecha: fechaActual, servicio: "Registro Web / Cuenta Creada", plan: "Acceso Cliente", estado: "Activo" }
+                    ]
                 };
-                localStorage.setItem('panax_clientes', JSON.stringify(baseDeDatosClientes));
                 alert("¡Cuenta registrada con éxito y enviada a tu Google Drive!");
             } else {
                 if (baseDeDatosClientes[email].clave !== clave) {
                     alert("Contraseña incorrecta para este correo.");
                     return;
                 }
+                baseDeDatosClientes[email].cedula = cedula;
+                baseDeDatosClientes[email].historial.push(
+                    { fecha: fechaActual, servicio: "Ingreso / Verificación de Servicio", plan: "Acceso Activo", estado: "Verificado" }
+                );
                 alert("¡Bienvenido de nuevo!");
             }
 
+            localStorage.setItem('panax_clientes', JSON.stringify(baseDeDatosClientes));
+
+            // Mostrar datos en el panel
+            mostrarPanelCliente(email, baseDeDatosClientes[email]);
+        }
+
+        function mostrarPanelCliente(email, datosCliente) {
             document.getElementById('clientNameDisplay').innerText = `Cliente: ${email.split('@')[0]}`;
             document.getElementById('clientEmailDisplay').innerText = email;
-            document.getElementById('regDate').innerText = baseDeDatosClientes[email].fechaRegistro;
+            document.getElementById('clientCedulaDisplay').innerText = `Cédula: ${datosCliente.cedula}`;
+
+            let historialHTML = "";
+            datosCliente.historial.forEach(item => {
+                historialHTML += `
+                    <div class="history-item">
+                        <div class="history-header">
+                            <span>🟢 ${item.servicio}</span>
+                            <span class="badge-status">${item.estado}</span>
+                        </div>
+                        <div class="history-details">
+                            📅 <strong>Fecha:</strong> ${item.fecha}<br>
+                            ⚡ <strong>Plan / Detalle:</strong> ${item.plan}
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('clientHistoryContainer').innerHTML = historialHTML;
 
             cerrarModalLogin();
             document.getElementById('mainStoreView').style.display = 'none';
@@ -635,10 +672,11 @@
             document.getElementById('mainStoreView').style.display = 'block';
 
             let topBtn = document.getElementById('topBtnAction');
-            topBtn.innerText = "🔑 Iniciar Sesión";
+            topBtn.innerText = "🔑 Iniciar Sesión / Registrarse";
             topBtn.onclick = abrirModalLogin;
 
             document.getElementById('login-usuario').value = '';
+            document.getElementById('login-cedula').value = '';
             document.getElementById('login-clave').value = '';
         }
 

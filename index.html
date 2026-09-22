@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Entretenimiento - Cine & Streaming</title>
+    <title>PanaXtreaming & Stella TV - Centro de Entretenimiento</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,154 +13,180 @@
         }
 
         body {
-            background-color: #050505;
+            background-color: #000000;
             background-image: 
-                linear-gradient(135deg, rgba(0, 0, 0, 0.82) 0%, rgba(5, 5, 8, 0.9) 100%),
-                radial-gradient(circle at 50% 20%, rgba(229, 9, 20, 0.25) 0%, transparent 60%),
-                url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop');
+                linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.88) 100%),
+                radial-gradient(circle at 50% 50%, rgba(229, 9, 20, 0.18) 0%, transparent 70%),
+                url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             padding: 20px;
             position: relative;
             overflow-x: hidden;
         }
 
-        .top-login-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(20, 20, 25, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+        /* Barra superior estilo streaming */
+        .top-nav {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10px;
+            z-index: 10;
+        }
+
+        .brand-logo {
+            font-size: 20px;
+            font-weight: 900;
+            color: #e50914;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+        }
+
+        .top-buttons-container {
+            display: flex;
+            gap: 12px;
+        }
+
+        .top-btn {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: #fff;
-            padding: 9px 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
             backdrop-filter: blur(10px);
-            z-index: 10;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
-        .top-login-btn:hover {
-            border-color: #e50914;
-            background: rgba(30, 30, 40, 0.95);
-            box-shadow: 0 0 12px rgba(229, 9, 20, 0.5);
+        .top-btn:hover {
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Modal de Inicio de Sesión / Registro */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
+        .top-btn-red {
+            background: #e50914;
+            border: 1px solid #e50914;
         }
 
-        .modal-container {
-            width: 100%;
-            max-width: 380px;
-            background-color: rgba(14, 14, 18, 0.95);
-            border-radius: 14px;
-            padding: 26px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(229, 9, 20, 0.3);
-            position: relative;
+        .top-btn-red:hover {
+            background: #f40612;
+            border-color: #f40612;
         }
 
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 18px;
-            font-size: 18px;
-            color: #aaa;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        .modal-close:hover {
-            color: #fff;
-        }
-
-        .modal-title {
-            font-size: 16px;
-            color: #ff334b;
-            margin-bottom: 18px;
+        /* Hero principal estilo Netflix */
+        .hero-section {
             text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
+            max-width: 800px;
+            margin: 60px 20px 40px 20px;
+            z-index: 5;
         }
 
-        .bg-text-left, .bg-text-right {
-            position: absolute;
-            top: 50%;
+        .hero-title {
+            font-size: 3rem;
             font-weight: 900;
-            letter-spacing: 18px;
-            opacity: 0.22;
-            pointer-events: none;
-            white-space: nowrap;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(229, 9, 20, 0.5);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
-        .bg-text-left {
-            left: -5vw;
-            color: #2ecc71;
-            font-size: 2.8vw;
-            transform: translateY(-50%) rotate(-90deg);
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            color: #e5e5e5;
         }
 
-        .bg-text-right {
-            right: -5vw;
-            color: #e50914;
-            font-size: 6vw;
-            transform: translateY(-50%) rotate(90deg);
+        /* Barra de entrada rápida estilo Netflix */
+        .hero-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
 
+        .hero-input {
+            flex: 1;
+            min-width: 280px;
+            padding: 16px 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background-color: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            font-size: 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-input:focus {
+            border-color: #fff;
+            outline: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-submit-btn {
+            background-color: #e50914;
+            color: white;
+            border: none;
+            padding: 16px 30px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5);
+        }
+
+        .hero-submit-btn:hover {
+            background-color: #f40612;
+        }
+
+        /* Contenedor de la tienda / pedidos */
         .container {
             width: 100%;
-            max-width: 480px;
-            background-color: rgba(12, 12, 14, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 16px;
-            padding: 26px;
+            max-width: 520px;
+            background-color: rgba(18, 18, 20, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 12px;
+            padding: 30px;
             box-shadow: 
                 0 30px 60px rgba(0, 0, 0, 0.95), 
-                0 0 40px rgba(229, 9, 20, 0.25);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            z-index: 2;
-            margin: 20px 0;
+                0 0 30px rgba(229, 9, 20, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            z-index: 5;
+            margin: 20px 0 50px 0;
         }
 
         .header-title {
-            font-size: 15px;
-            color: #ff334b;
+            font-size: 16px;
+            color: #e50914;
             margin-bottom: 20px;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: bold;
-            text-shadow: 0 2px 8px rgba(229, 9, 20, 0.6);
         }
 
         .card-main-pana {
             background: linear-gradient(135deg, #2ecc71, #27ae60);
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 16px;
             margin-bottom: 15px;
             color: #000;
@@ -168,12 +194,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
         }
 
         .card-main-stella {
             background: linear-gradient(135deg, #e50914, #b80710);
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 16px;
             margin-top: 25px;
             margin-bottom: 15px;
@@ -182,7 +208,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
         }
 
         .icon-text {
@@ -192,13 +218,12 @@
         }
 
         .dropdown {
-            background-color: rgba(20, 20, 24, 0.88);
-            border-radius: 10px;
+            background-color: rgba(25, 25, 30, 0.9);
+            border-radius: 8px;
             margin-bottom: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            transition: border-color 0.3s ease;
         }
 
         .dropdown-header {
@@ -216,7 +241,7 @@
         .dropdown-header span small {
             display: block;
             font-size: 11px;
-            color: #ddd;
+            color: #bbb;
             font-weight: normal;
             margin-top: 3px;
         }
@@ -234,7 +259,7 @@
         .dropdown-content {
             padding: 16px;
             background-color: rgba(10, 10, 12, 0.95);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: none;
         }
 
@@ -243,11 +268,11 @@
         }
 
         .sub-option {
-            background-color: rgba(26, 26, 32, 0.9);
+            background-color: rgba(30, 30, 38, 0.9);
             padding: 12px;
-            border-radius: 8px;
+            border-radius: 6px;
             margin-bottom: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .sub-option-title {
@@ -275,7 +300,7 @@
             width: 100%;
             padding: 13px;
             border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             background-color: rgba(15, 15, 18, 0.95);
             color: #fff;
             margin-bottom: 12px;
@@ -285,7 +310,7 @@
         .input-field:focus {
             border-color: #e50914;
             outline: none;
-            box-shadow: 0 0 12px rgba(229, 9, 20, 0.6);
+            box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
         }
 
         select.input-field option {
@@ -305,24 +330,22 @@
             color: white;
             padding: 7px 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             margin-right: 10px;
             font-weight: bold;
-            transition: background 0.2s;
         }
 
         input[type="file"]::file-selector-button:hover {
             background-color: #e50914;
-            color: #fff;
         }
 
         .btn-comenzar {
             width: 100%;
-            background: linear-gradient(135deg, #ff1e2b, #b80710);
+            background: linear-gradient(135deg, #e50914, #b80710);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 14px;
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
@@ -330,19 +353,66 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: background 0.2s;
-            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5);
             margin-top: 5px;
         }
 
         .btn-comenzar:hover {
-            background: linear-gradient(135deg, #ff3340, #d90a16);
+            background: linear-gradient(135deg, #f40612, #d90a16);
         }
 
-        .btn-comenzar:active {
-            transform: scale(0.98);
+        /* Modales */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
         }
 
-        /* Estilos para la sección de Historial de Cliente */
+        .modal-container {
+            width: 100%;
+            max-width: 380px;
+            background-color: rgba(18, 18, 22, 0.98);
+            border-radius: 12px;
+            padding: 26px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 30px rgba(229, 9, 20, 0.3);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            font-size: 18px;
+            color: #aaa;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            color: #e50914;
+            margin-bottom: 18px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        /* Panel de Historial del Cliente */
         .client-dashboard {
             display: none;
         }
@@ -350,7 +420,7 @@
         .user-welcome-card {
             background: rgba(25, 25, 32, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 16px;
             margin-bottom: 20px;
             text-align: center;
@@ -363,9 +433,9 @@
         }
 
         .history-item {
-            background: rgba(18, 18, 24, 0.95);
+            background: rgba(14, 14, 18, 0.95);
             border-left: 4px solid #2ecc71;
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 14px;
             margin-bottom: 12px;
             font-size: 13px;
@@ -397,30 +467,56 @@
 </head>
 <body>
 
-    <!-- Botón superior derecho para Iniciar Sesión / Registrarse -->
-    <button class="top-login-btn" id="topBtnAction" onclick="abrirModalLogin()">🔑 Iniciar Sesión / Registrarse</button>
-
-    <!-- Modal de Inicio de Sesión / Registro -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="modal-container">
-            <button class="modal-close" onclick="cerrarModalLogin()">&times;</button>
-            <div class="modal-title">🔐 Registro / Acceso de Clientes</div>
-            <p style="font-size: 12px; color: #ccc; margin-bottom: 14px;">Ingresa tus datos para registrarte o entrar:</p>
-            
-            <input type="email" id="login-usuario" class="input-field" placeholder="Correo electrónico real">
-            <input type="text" id="login-cedula" class="input-field" placeholder="Número de Cédula (Ej: V-12345678)">
-            <input type="password" id="login-clave" class="input-field" placeholder="Contraseña (mínimo 6 caracteres)">
-            
-            <button class="btn-comenzar" onclick="procesarLoginRegistro()">Entrar o Registrarme</button>
+    <!-- Barra Superior -->
+    <div class="top-nav">
+        <div class="brand-logo">PanaXtreaming & Stella TV</div>
+        <div class="top-buttons-container" id="topNavButtons">
+            <button class="top-btn" onclick="abrirModalRegistro()">Registrarse</button>
+            <button class="top-btn top-btn-red" onclick="abrirModalLogin()">Iniciar sesión</button>
         </div>
     </div>
 
-    <!-- Marcas de agua laterales -->
-    <div class="bg-text-left">PANAXSTREAMING</div>
-    <div class="bg-text-right">STELLA TV</div>
+    <!-- Sección Hero Estilo Streaming -->
+    <div class="hero-section" id="heroWelcomeSection">
+        <h1 class="hero-title">Contenido ilimitado, justo para ti</h1>
+        <p class="hero-subtitle">Disfruta de tus plataformas y canales favoritos al mejor precio. Regístrate o ingresa para comenzar.</p>
+        <div class="hero-form">
+            <input type="email" id="hero-email-input" class="hero-input" placeholder="Correo electrónico real">
+            <button class="hero-submit-btn" onclick="comenzarDesdeHero()">Comenzar &gt;</button>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="cerrarModalRegistro()">&times;</button>
+            <div class="modal-title">Registro de Nuevo Cliente</div>
+            <p style="font-size: 12px; color: #ccc; margin-bottom: 14px;">Crea tu cuenta para acceder al sistema:</p>
+            
+            <input type="email" id="reg-usuario" class="input-field" placeholder="Correo electrónico real">
+            <input type="text" id="reg-cedula" class="input-field" placeholder="Número de Cédula (Ej: V-12345678)">
+            <input type="password" id="reg-clave" class="input-field" placeholder="Contraseña (mínimo 6 caracteres)">
+            
+            <button class="btn-comenzar" onclick="procesarRegistro()">Completar Registro</button>
+        </div>
+    </div>
+
+    <!-- Modal de Inicio de Sesión -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-container">
+            <button class="modal-close" onclick="cerrarModalLogin()">&times;</button>
+            <div class="modal-title">Iniciar Sesión</div>
+            <p style="font-size: 12px; color: #ccc; margin-bottom: 14px;">Ingresa con tus datos para ver tu historial:</p>
+            
+            <input type="email" id="login-usuario" class="input-field" placeholder="Correo electrónico registrado">
+            <input type="password" id="login-clave" class="input-field" placeholder="Contraseña">
+            
+            <button class="btn-comenzar" onclick="procesarLogin()">Entrar a mi Cuenta</button>
+        </div>
+    </div>
 
     <!-- CONTENEDOR PRINCIPAL DE PEDIDOS (INICIO) -->
-    <div class="container" id="mainStoreView">
+    <div class="container" id="mainStoreView" style="display: none;">
         <div class="header-title">🎬 Centro de Entretenimiento 🎬</div>
 
         <!-- ================= PANAXSTREAMING ================= -->
@@ -548,17 +644,32 @@
 
         <p style="font-size: 12px; color: #ddd; margin-bottom: 12px; font-weight: bold;">Tus adquisiciones, compras y renovaciones:</p>
 
-        <!-- Contenedor donde se cargará dinámicamente el historial de compras -->
         <div class="history-list" id="clientHistoryContainer">
-            <!-- Los movimientos se pintarán aquí automáticamente -->
+            <!-- Movimientos -->
         </div>
 
         <button class="btn-comenzar" style="background: #333; margin-top: 15px;" onclick="cerrarSesion()">Cerrar Sesión / Volver</button>
     </div>
 
-    <!-- Script conectado a tu Google Sheet personal -->
+    <!-- Script de control y sincronización -->
     <script>
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbXWyD176MXTR4CYELGucRkFzp23RXruBDJmdfw9FBXMo0e9Gn_MeSx1_bUoZycQo8/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxmMI5f7TrU2cJqNlPvLMfWGpL5nIaridMbNvOstYihA_CrbZjgy3b4N_hzfSUNcSKL/exec";
+
+        function comenzarDesdeHero() {
+            let emailHero = document.getElementById('hero-email-input').value.trim();
+            if(emailHero) {
+                document.getElementById('reg-usuario').value = emailHero;
+            }
+            abrirModalRegistro();
+        }
+
+        function abrirModalRegistro() {
+            document.getElementById('registerModal').style.display = 'flex';
+        }
+
+        function cerrarModalRegistro() {
+            document.getElementById('registerModal').style.display = 'none';
+        }
 
         function abrirModalLogin() {
             document.getElementById('loginModal').style.display = 'flex';
@@ -568,69 +679,115 @@
             document.getElementById('loginModal').style.display = 'none';
         }
 
-        async function procesarLoginRegistro() {
-            let email = document.getElementById('login-usuario').value.trim().toLowerCase();
-            let cedula = document.getElementById('login-cedula').value.trim();
-            let clave = document.getElementById('login-clave').value.trim();
+        function enviarGoogleDrive(email, cedula, clave, servicio, plan, estado) {
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.includes("script.google.com")) {
+                let datosEnvio = new URLSearchParams({
+                    correo: email,
+                    cedula: cedula,
+                    clave: clave,
+                    servicio: servicio,
+                    plan: plan,
+                    estado: estado
+                });
+
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: datosEnvio
+                }).catch(error => console.error("Error de sincronización con Drive:", error));
+            }
+        }
+
+        function procesarRegistro() {
+            let email = document.getElementById('reg-usuario').value.trim().toLowerCase();
+            let cedula = document.getElementById('reg-cedula').value.trim();
+            let clave = document.getElementById('reg-clave').value.trim();
 
             let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!regexEmail.test(email)) {
                 alert("Por favor, ingresa un correo electrónico real y válido.");
                 return;
             }
-
             if (!cedula) {
                 alert("Por favor, ingresa tu número de cédula.");
                 return;
             }
-
             if (!clave || clave.length < 6) {
                 alert("Por favor, ingresa una contraseña segura (mínimo 6 caracteres).");
                 return;
             }
 
-            // Envío de datos al Google Drive (Google Sheet) con la URL configurada
-            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.includes("https://script.google.com/macros/s/AKfycby_herhjOUedxy-hzm8gT2O-LxX4RVxvLHLbtNF4EhfbekHvIrhyQS3SKV5xkRt5N_R/exec")) {
-                let params = `?correo=${encodeURIComponent(email)}&cedula=${encodeURIComponent(cedula)}&clave=${encodeURIComponent(clave)}&servicio=Registro%20Web&plan=Acceso%20Cliente&estado=Registrado`;
-                let iframe = document.createElement('iframe');
-                iframe.style.display = 'none';
-                iframe.src = GOOGLE_SCRIPT_URL + params;
-                document.body.appendChild(iframe);
-                
-                setTimeout(() => {
-                    document.body.removeChild(iframe);
-                }, 1000);
+            let baseDeDatosClientes = JSON.parse(localStorage.getItem('panax_clientes')) || {};
+            
+            if (baseDeDatosClientes[email]) {
+                alert("Este correo ya está registrado. Por favor, inicia sesión.");
+                return;
             }
 
-            // Guardar o verificar en LocalStorage del cliente con su historial de movimientos
-            let baseDeDatosClientes = JSON.parse(localStorage.getItem('panax_clientes')) || {};
             let fechaActual = new Date().toLocaleDateString();
 
-            if (!baseDeDatosClientes[email]) {
-                baseDeDatosClientes[email] = {
-                    cedula: cedula,
-                    clave: clave,
-                    historial: [
-                        { fecha: fechaActual, servicio: "Registro Web / Cuenta Creada", plan: "Acceso Cliente", estado: "Activo" }
-                    ]
-                };
-                alert("¡Cuenta registrada con éxito y enviada a tu Google Drive!");
-            } else {
-                if (baseDeDatosClientes[email].clave !== clave) {
-                    alert("Contraseña incorrecta para este correo.");
-                    return;
-                }
-                baseDeDatosClientes[email].cedula = cedula;
-                baseDeDatosClientes[email].historial.push(
-                    { fecha: fechaActual, servicio: "Ingreso / Verificación de Servicio", plan: "Acceso Activo", estado: "Verificado" }
-                );
-                alert("¡Bienvenido de nuevo!");
-            }
-
+            baseDeDatosClientes[email] = {
+                cedula: cedula,
+                clave: clave,
+                historial: [
+                    { fecha: fechaActual, servicio: "Registro de Cuenta Nueva", plan: "Acceso Cliente", estado: "Registrado" }
+                ]
+            };
             localStorage.setItem('panax_clientes', JSON.stringify(baseDeDatosClientes));
 
-            // Mostrar datos en el panel
+            enviarGoogleDrive(email, cedula, clave, "Registro Web", "Acceso Cliente", "Nuevo Registro");
+
+            alert("¡Cuenta registrada con éxito! Bienvenido al Centro de Entretenimiento.");
+            cerrarModalRegistro();
+
+            // Ocultar hero y mostrar tienda de pedidos
+            document.getElementById('heroWelcomeSection').style.display = 'none';
+            document.getElementById('mainStoreView').style.display = 'block';
+
+            document.getElementById('topNavButtons').innerHTML = `
+                <button class="top-btn" onclick="verMiPanelDesdeTienda('${email}')">👤 Mi Panel</button>
+                <button class="top-btn top-btn-red" onclick="cerrarSesion()">Salir</button>
+            `;
+        }
+
+        function procesarLogin() {
+            let email = document.getElementById('login-usuario').value.trim().toLowerCase();
+            let clave = document.getElementById('login-clave').value.trim();
+
+            let baseDeDatosClientes = JSON.parse(localStorage.getItem('panax_clientes')) || {};
+
+            if (!baseDeDatosClientes[email]) {
+                alert("Este correo no está registrado. Por favor, regístrate primero.");
+                return;
+            }
+
+            if (baseDeDatosClientes[email].clave !== clave) {
+                alert("Contraseña incorrecta.");
+                return;
+            }
+
+            let fechaActual = new Date().toLocaleDateString();
+
+            baseDeDatosClientes[email].historial.push(
+                { fecha: fechaActual, servicio: "Inicio de Sesión / Consulta", plan: "Verificación Activa", estado: "Accedió" }
+            );
+            localStorage.setItem('panax_clientes', JSON.stringify(baseDeDatosClientes));
+
+            enviarGoogleDrive(email, baseDeDatosClientes[email].cedula, clave, "Inicio de Sesión", "Consulta Panel", "Activo");
+
+            alert("¡Bienvenido de nuevo!");
+            cerrarModalLogin();
+
+            document.getElementById('heroWelcomeSection').style.display = 'none';
             mostrarPanelCliente(email, baseDeDatosClientes[email]);
+        }
+
+        function verMiPanelDesdeTienda(email) {
+            let baseDeDatosClientes = JSON.parse(localStorage.getItem('panax_clientes')) || {};
+            if(baseDeDatosClientes[email]) {
+                document.getElementById('mainStoreView').style.display = 'none';
+                mostrarPanelCliente(email, baseDeDatosClientes[email]);
+            }
         }
 
         function mostrarPanelCliente(email, datosCliente) {
@@ -648,7 +805,7 @@
                         </div>
                         <div class="history-details">
                             📅 <strong>Fecha:</strong> ${item.fecha}<br>
-                            ⚡ <strong>Plan / Detalle:</strong> ${item.plan}
+                            ⚡ <strong>Detalle:</strong> ${item.plan}
                         </div>
                     </div>
                 `;
@@ -656,28 +813,34 @@
 
             document.getElementById('clientHistoryContainer').innerHTML = historialHTML;
 
-            cerrarModalLogin();
+            document.getElementById('heroWelcomeSection').style.display = 'none';
             document.getElementById('mainStoreView').style.display = 'none';
             document.getElementById('clientDashboardView').style.display = 'block';
 
-            let topBtn = document.getElementById('topBtnAction');
-            topBtn.innerText = "👤 Mi Panel";
-            topBtn.onclick = function() {
-                alert("Ya te encuentras en tu panel de cliente.");
-            };
+            document.getElementById('topNavButtons').innerHTML = `
+                <button class="top-btn" onclick="volverAlInicio('${email}')">🏠 Catálogo</button>
+                <button class="top-btn top-btn-red" onclick="cerrarSesion()">Salir</button>
+            `;
+        }
+
+        function volverAlInicio(email) {
+            document.getElementById('clientDashboardView').style.display = 'none';
+            document.getElementById('mainStoreView').style.display = 'block';
+            document.getElementById('topNavButtons').innerHTML = `
+                <button class="top-btn" onclick="verMiPanelDesdeTienda('${email}')">👤 Mi Panel</button>
+                <button class="top-btn top-btn-red" onclick="cerrarSesion()">Salir</button>
+            `;
         }
 
         function cerrarSesion() {
             document.getElementById('clientDashboardView').style.display = 'none';
-            document.getElementById('mainStoreView').style.display = 'block';
+            document.getElementById('mainStoreView').style.display = 'none';
+            document.getElementById('heroWelcomeSection').style.display = 'block';
 
-            let topBtn = document.getElementById('topBtnAction');
-            topBtn.innerText = "🔑 Iniciar Sesión / Registrarse";
-            topBtn.onclick = abrirModalLogin;
-
-            document.getElementById('login-usuario').value = '';
-            document.getElementById('login-cedula').value = '';
-            document.getElementById('login-clave').value = '';
+            document.getElementById('topNavButtons').innerHTML = `
+                <button class="top-btn" onclick="abrirModalRegistro()">Registrarse</button>
+                <button class="top-btn top-btn-red" onclick="abrirModalLogin()">Iniciar sesión</button>
+            `;
         }
 
         function enviarWhatsApp(servicio) {
@@ -701,7 +864,7 @@
                 return;
             }
             if (!tieneArchivo) {
-                alert("Por favor, adjunta la imagen del comprobante o captura de pago.");
+                alert("Por favor, adjunta la imagen del comprobante de pago.");
                 fileInput.focus();
                 return;
             }
@@ -717,7 +880,6 @@
         }
 
         const headers = document.querySelectorAll('.dropdown-header');
-
         headers.forEach(header => {
             header.addEventListener('click', () => {
                 const dropdown = header.parentElement;

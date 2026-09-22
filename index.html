@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PanaXtreaming & Stella TV - Contenido Ilimitado</title>
+    <title>PanaXtreaming, Stella TV & Flujo TV</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,11 +13,11 @@
         }
 
         body {
-            background-color: #000000;
+            background-color: #050b07;
             background-image: 
-                linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.9) 100%),
-                radial-gradient(circle at 50% 50%, rgba(229, 9, 20, 0.25) 0%, transparent 70%),
-                url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1920&auto=format&fit=crop');
+                linear-gradient(to top, rgba(5, 11, 7, 0.82) 0%, rgba(5, 11, 7, 0.45) 50%, rgba(5, 11, 7, 0.82) 100%),
+                radial-gradient(circle at 50% 30%, rgba(46, 204, 113, 0.28) 0%, transparent 65%),
+                url('image_86fbbc.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -30,7 +30,7 @@
             padding: 20px;
         }
 
-        /* Barra superior */
+        /* Barra superior con marcas integradas */
         .top-nav {
             width: 100%;
             max-width: 1200px;
@@ -39,16 +39,33 @@
             align-items: center;
             padding: 20px 10px;
             z-index: 10;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .side-brand {
+            font-size: 16px;
+            font-weight: 800;
+            color: #3498db;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 12px rgba(52, 152, 219, 0.6);
+        }
+
+        .side-brand.flujo {
+            color: #e67e22;
+            text-shadow: 0 0 12px rgba(230, 126, 34, 0.6);
         }
 
         .brand-logo {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 900;
-            color: #e50914;
+            color: #2ecc71;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+            text-shadow: 0 0 20px rgba(46, 204, 113, 0.8), 0 0 5px rgba(0,0,0,0.9);
             cursor: pointer;
+            text-align: center;
         }
 
         .top-btns {
@@ -57,31 +74,36 @@
         }
 
         .top-btn {
-            background: #e50914;
-            border: 1px solid #e50914;
-            color: #fff;
-            padding: 8px 18px;
-            border-radius: 4px;
+            background: #2ecc71;
+            border: 1px solid #2ecc71;
+            color: #000;
+            padding: 9px 20px;
+            border-radius: 6px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 800;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: all 0.2s;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
         }
 
         .top-btn:hover {
-            background: #f40612;
+            background: #27ae60;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.7);
         }
 
         .top-btn-secondary {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(10, 20, 15, 0.85);
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            color: #2ecc71;
         }
 
         .top-btn-secondary:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(46, 204, 113, 0.2);
+            color: #fff;
         }
 
-        /* Contenedor central de la página principal estilo Netflix */
+        /* Contenedor central con el nuevo eslogan y efecto reflejo */
         .main-hero {
             flex: 1;
             display: flex;
@@ -89,33 +111,54 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
             padding: 20px;
             margin: auto;
         }
 
         .main-hero h1 {
-            font-size: 3.2rem;
+            font-size: 2.8rem;
             font-weight: 900;
-            line-height: 1.15;
+            line-height: 1.2;
             margin-bottom: 20px;
             letter-spacing: -0.5px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            text-transform: uppercase;
+            text-shadow: 0 4px 25px rgba(0,0,0,0.95), 0 0 35px rgba(46,204,113,0.35);
         }
 
-        .main-hero p {
-            font-size: 1.1rem;
-            color: #ddd;
+        /* Efecto visual de reflejo inspirado en el capture */
+        .hero-reflection-box {
+            position: relative;
             margin-bottom: 30px;
-            max-width: 650px;
-            line-height: 1.5;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+
+        .hero-reflection-box img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 8px;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9), 0 0 20px rgba(46,204,113,0.3);
+        }
+
+        /* Simulación de reflejo inferior */
+        .hero-reflection-box::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to bottom, rgba(46, 204, 113, 0.25), transparent);
+            filter: blur(8px);
+            transform: scaleY(-1);
+            opacity: 0.6;
+            pointer-events: none;
         }
 
         .hero-form {
             display: flex;
             width: 100%;
-            max-width: 550px;
+            max-width: 580px;
             gap: 10px;
             flex-wrap: wrap;
             justify-content: center;
@@ -125,47 +168,51 @@
             flex: 1;
             min-width: 280px;
             padding: 16px 20px;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            background-color: rgba(0, 0, 0, 0.75);
+            border-radius: 6px;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            background-color: rgba(10, 18, 13, 0.88);
+            backdrop-filter: blur(10px);
             color: #fff;
             font-size: 16px;
         }
 
         .hero-input:focus {
-            border-color: #e50914;
+            border-color: #2ecc71;
             outline: none;
+            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
         }
 
         .hero-btn {
-            background: #e50914;
-            color: white;
+            background: #2ecc71;
+            color: #000;
             border: none;
-            padding: 16px 30px;
-            border-radius: 4px;
-            font-weight: bold;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-weight: 900;
             cursor: pointer;
             font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: background 0.2s;
-            box-shadow: 0 4px 20px rgba(229, 9, 20, 0.5);
+            transition: all 0.2s;
+            box-shadow: 0 4px 25px rgba(46, 204, 113, 0.6);
         }
 
         .hero-btn:hover {
-            background: #f40612;
+            background: #27ae60;
+            color: #fff;
+            box-shadow: 0 6px 30px rgba(46, 204, 113, 0.9);
         }
 
-        /* Pantallas modales / Formularios (Login, Registro, Catálogo, Panel, Checkout) */
+        /* Pantallas modales / Formularios */
         .screen-box {
             width: 100%;
             max-width: 440px;
-            background: rgba(18, 18, 22, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(10, 18, 13, 0.9);
+            backdrop-filter: blur(25px);
             border-radius: 12px;
             padding: 35px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.95), 0 0 30px rgba(229, 9, 20, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(46, 204, 113, 0.25);
+            border: 1px solid rgba(46, 204, 113, 0.35);
             margin: auto;
             text-align: center;
             display: none;
@@ -176,16 +223,17 @@
         }
 
         .screen-box h2 {
-            font-size: 1.4rem;
-            color: #e50914;
+            font-size: 1.5rem;
+            color: #2ecc71;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(46,204,113,0.4);
         }
 
         .screen-box p {
             font-size: 12px;
-            color: #ccc;
+            color: #cbd5e1;
             margin-bottom: 20px;
         }
 
@@ -193,37 +241,40 @@
             width: 100%;
             padding: 13px;
             border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(15, 15, 18, 0.95);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            background-color: rgba(5, 10, 7, 0.92);
             color: #fff;
             margin-bottom: 12px;
             font-size: 14px;
         }
 
         .input-field:focus {
-            border-color: #e50914;
+            border-color: #2ecc71;
             outline: none;
+            box-shadow: 0 0 12px rgba(46,204,113,0.3);
         }
 
         .btn-main {
             width: 100%;
-            background: linear-gradient(135deg, #e50914, #b80710);
-            color: white;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: #000;
             border: none;
             padding: 13px;
             border-radius: 6px;
-            font-weight: bold;
+            font-weight: 900;
             cursor: pointer;
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transition: background 0.2s;
-            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5);
+            transition: all 0.2s;
+            box-shadow: 0 4px 20px rgba(46, 204, 113, 0.5);
             margin-top: 5px;
         }
 
         .btn-main:hover {
-            background: linear-gradient(135deg, #f40612, #d90a16);
+            background: linear-gradient(135deg, #27ae60, #219653);
+            color: #fff;
+            box-shadow: 0 6px 25px rgba(46, 204, 113, 0.8);
         }
 
         /* Catálogo de Ventas */
@@ -235,35 +286,38 @@
         }
 
         .catalog-banner {
-            background: linear-gradient(135deg, rgba(229, 9, 20, 0.25), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1200&auto=format&fit=crop');
+            background: linear-gradient(135deg, rgba(10, 25, 15, 0.65), rgba(5, 10, 7, 0.85)), url('image_86fbbc.jpg');
             background-size: cover;
             background-position: center;
             border-radius: 12px;
             padding: 35px;
             margin-bottom: 25px;
-            border: 1px solid rgba(255,255,255,0.15);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.8), 0 0 25px rgba(46,204,113,0.2);
         }
 
         .catalog-banner h2 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             margin-bottom: 8px;
             color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
 
         .catalog-banner p {
             font-size: 0.95rem;
-            color: #ddd;
+            color: #e2e8f0;
             max-width: 600px;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.8);
         }
 
         .section-heading {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: bold;
             color: #fff;
             margin-bottom: 15px;
-            border-left: 4px solid #e50914;
-            padding-left: 10px;
+            border-left: 5px solid #2ecc71;
+            padding-left: 12px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
 
         .products-grid {
@@ -274,19 +328,27 @@
         }
 
         .product-card {
-            background-color: rgba(20, 20, 25, 0.9);
+            background-color: rgba(10, 18, 13, 0.88);
+            backdrop-filter: blur(15px);
             border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.28);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7), 0 0 15px rgba(46,204,113,0.1);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(46, 204, 113, 0.7);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.8), 0 0 20px rgba(46,204,113,0.3);
         }
 
         .product-card-header {
             padding: 18px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(0,0,0,0.2));
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(135deg, rgba(46,204,113,0.15), rgba(0,0,0,0.3));
+            border-bottom: 1px solid rgba(46, 204, 113, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -299,18 +361,20 @@
         }
 
         .product-badge {
-            background: rgba(229, 9, 20, 0.2);
-            color: #e50914;
+            background: rgba(46, 204, 113, 0.25);
+            color: #2ecc71;
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 10px;
             font-weight: bold;
             text-transform: uppercase;
+            border: 1px solid rgba(46,204,113,0.4);
         }
 
-        .product-badge.pana {
-            background: rgba(46, 204, 113, 0.2);
-            color: #2ecc71;
+        .product-badge.game {
+            background: rgba(241, 196, 15, 0.25);
+            color: #f1c40f;
+            border-color: rgba(241,196,15,0.4);
         }
 
         .product-body {
@@ -323,58 +387,92 @@
 
         .product-desc {
             font-size: 12px;
-            color: #ccc;
+            color: #cbd5e1;
             margin-bottom: 15px;
             line-height: 1.4;
         }
 
         .product-price {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 900;
             color: #fff;
             margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(46,204,113,0.3);
         }
 
         .product-price span {
             font-size: 0.75rem;
-            color: #aaa;
+            color: #94a3b8;
             font-weight: normal;
         }
 
         .btn-buy {
             width: 100%;
-            background: #e50914;
-            color: white;
+            background: #2ecc71;
+            color: #000;
             border: none;
             padding: 11px;
             border-radius: 6px;
-            font-weight: bold;
+            font-weight: 900;
             cursor: pointer;
             text-transform: uppercase;
             font-size: 11px;
             letter-spacing: 1px;
+            margin-bottom: 6px;
+            box-shadow: 0 2px 10px rgba(46,204,113,0.4);
+            transition: all 0.2s;
         }
 
-        .btn-buy.pana {
-            background: #2ecc71;
+        .btn-buy:hover {
+            background: #27ae60;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(46,204,113,0.7);
+        }
+
+        .btn-buy.game {
+            background: #f39c12;
             color: #000;
+            box-shadow: 0 2px 10px rgba(243,156,18,0.4);
         }
 
-        /* Panel de Control del Cliente */
-        .client-panel {
+        .btn-demo {
+            width: 100%;
+            background: rgba(5, 10, 7, 0.8);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+            padding: 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+        }
+
+        .btn-demo:hover {
+            background: rgba(46, 204, 113, 0.2);
+            color: #fff;
+            border-color: #2ecc71;
+        }
+
+        /* Panel de Control del Cliente y Checkout */
+        .client-panel, .checkout-box {
             display: none;
             width: 100%;
-            max-width: 650px;
+            max-width: 600px;
             margin: 20px auto;
-            background: rgba(18, 18, 22, 0.95);
+            background: rgba(10, 18, 13, 0.92);
+            backdrop-filter: blur(20px);
             border-radius: 12px;
             padding: 30px;
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(46, 204, 113, 0.35);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 25px rgba(46,204,113,0.2);
         }
 
         .client-info-card {
-            background: rgba(25, 25, 32, 0.9);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(5, 12, 8, 0.9);
+            border: 1px solid rgba(46, 204, 113, 0.25);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -387,49 +485,44 @@
         }
 
         .history-item {
-            background: rgba(14, 14, 18, 0.95);
+            background: rgba(5, 10, 7, 0.95);
             border-left: 4px solid #2ecc71;
             border-radius: 6px;
             padding: 12px;
             margin-bottom: 10px;
             font-size: 12px;
-        }
-
-        /* Checkout Container */
-        .checkout-box {
-            display: none;
-            width: 100%;
-            max-width: 500px;
-            margin: 20px auto;
-            background: rgba(18, 18, 22, 0.95);
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid rgba(255,255,255,0.12);
+            border-top: 1px solid rgba(46,204,113,0.15);
+            border-right: 1px solid rgba(46,204,113,0.15);
+            border-bottom: 1px solid rgba(46,204,113,0.15);
         }
 
         input[type="file"].input-field {
             padding: 10px;
-            color: #ddd;
-            background-color: rgba(22, 22, 28, 0.95);
+            color: #cbd5e1;
+            background-color: rgba(5, 10, 7, 0.95);
             cursor: pointer;
         }
     </style>
 </head>
 <body>
 
-    <!-- Barra Superior -->
+    <!-- Barra Superior con Stella TV, PanaXtreaming y Flujo TV -->
     <div class="top-nav">
-        <div class="brand-logo" onclick="irAlInicio()">PanaXtreaming & Stella TV</div>
+        <div class="side-brand">⭐ Stella TV</div>
+        <div class="brand-logo" onclick="irAlInicio()">PanaXtreaming</div>
+        <div class="side-brand flujo">📺 Flujo TV</div>
         <div class="top-btns" id="topNavButtons">
             <button class="top-btn top-btn-secondary" onclick="mostrarPantalla('registerScreen')">Registrarse</button>
             <button class="top-btn" onclick="mostrarPantalla('loginScreen')">Iniciar Sesión</button>
         </div>
     </div>
 
-    <!-- 0. PÁGINA PRINCIPAL ESTILO NETFLIX -->
+    <!-- 0. PÁGINA PRINCIPAL CON EL ESLOGAN Y REFLEJO -->
     <div class="main-hero" id="homeHero">
-        <h1>Contenido ilimitado, justo para ti</h1>
-        <p>Disfruta de tus plataformas y canales favoritos al mejor precio. Regístrate o ingresa para explorar el catálogo.</p>
+        <h1>TV en vivo, series y películas de todas las plataformas al alcance de un solo clic</h1>
+        <div class="hero-reflection-box">
+            <img src="image_86fbbc.jpg" alt="PanaXtreaming Preview">
+        </div>
         <div class="hero-form">
             <input type="email" id="heroEmail" class="hero-input" placeholder="Correo electrónico para empezar">
             <button class="hero-btn" onclick="empezarRegistroHero()">Comenzar &gt;</button>
@@ -446,7 +539,7 @@
         <input type="password" id="reg-pass" class="input-field" placeholder="Contraseña (mínimo 6 caracteres)">
         
         <button class="btn-main" onclick="registrarCliente()">Registrarse y Entrar</button>
-        <p style="margin-top: 15px; font-size: 11px;">¿Ya tienes cuenta? <a href="javascript:void(0);" style="color: #e50914;" onclick="mostrarPantalla('loginScreen')">Inicia sesión aquí</a></p>
+        <p style="margin-top: 15px; font-size: 11px;">¿Ya tienes cuenta? <a href="javascript:void(0);" style="color: #2ecc71; font-weight: bold;" onclick="mostrarPantalla('loginScreen')">Inicia sesión aquí</a></p>
     </div>
 
     <!-- 2. PANTALLA DE INICIO DE SESIÓN -->
@@ -458,13 +551,13 @@
         <input type="password" id="login-pass" class="input-field" placeholder="Contraseña">
         
         <button class="btn-main" onclick="iniciarSesionCliente()">Entrar a mi Panel</button>
-        <p style="margin-top: 15px; font-size: 11px;">¿No tienes cuenta? <a href="javascript:void(0);" style="color: #e50914;" onclick="mostrarPantalla('registerScreen')">Regístrate gratis</a></p>
+        <p style="margin-top: 15px; font-size: 11px;">¿No tienes cuenta? <a href="javascript:void(0);" style="color: #2ecc71; font-weight: bold;" onclick="mostrarPantalla('registerScreen')">Regístrate gratis</a></p>
     </div>
 
     <!-- 3. PANEL DE CATÁLOGO DE VENTAS -->
     <div class="catalog-view" id="catalogView">
         <div class="catalog-banner">
-            <h2>Catálogo de Entretenimiento</h2>
+            <h2>Catálogo de Películas, Series y Entretenimiento</h2>
             <p>Elige tu plan ideal. Realiza tu pago mediante Pago Móvil y envíalo al instante por WhatsApp para procesar tu activación.</p>
         </div>
 
@@ -473,13 +566,14 @@
             <div class="product-card">
                 <div class="product-card-header">
                     <span class="product-title">Cuenta Completa</span>
-                    <span class="product-badge pana">PanaXtreaming</span>
+                    <span class="product-badge">PanaXtreaming</span>
                 </div>
                 <div class="product-body">
                     <p class="product-desc">Acceso total con máxima estabilidad y perfiles privados garantizados.</p>
                     <div>
                         <div class="product-price">8$ <span>(Tasa BCV)</span></div>
-                        <button class="btn-buy pana" onclick="prepararCompra('PanaXtreaming', 'Cuenta Completa PanaXtreaming (8$)')">Comprar Plan</button>
+                        <button class="btn-buy" onclick="prepararCompra('PanaXtreaming', 'Cuenta Completa PanaXtreaming (8$)')">Comprar Plan</button>
+                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h PanaXtreaming')">Pedir Demo (12h)</button>
                     </div>
                 </div>
             </div>
@@ -487,23 +581,38 @@
             <div class="product-card">
                 <div class="product-card-header">
                     <span class="product-title">1 Pantalla Individual</span>
-                    <span class="product-badge pana">PanaXtreaming</span>
+                    <span class="product-badge">PanaXtreaming</span>
                 </div>
                 <div class="product-body">
                     <p class="product-desc">Disfruta de tu perfil individual en tu dispositivo preferido.</p>
                     <div>
                         <div class="product-price">4$ <span>(Tasa BCV)</span></div>
-                        <button class="btn-buy pana" onclick="prepararCompra('PanaXtreaming', '1 Pantalla PanaXtreaming (4$)')">Comprar Plan</button>
+                        <button class="btn-buy" onclick="prepararCompra('PanaXtreaming', '1 Pantalla PanaXtreaming (4$)')">Comprar Plan</button>
+                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h PanaXtreaming')">Pedir Demo (12h)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card-header">
+                    <span class="product-title">Canva Pro</span>
+                    <span class="product-badge">Diseño</span>
+                </div>
+                <div class="product-body">
+                    <p class="product-desc">Acceso completo a herramientas premium, plantillas y recursos ilimitados de diseño.</p>
+                    <div>
+                        <div class="product-price">3$ <span>(Tasa BCV)</span></div>
+                        <button class="btn-buy" onclick="prepararCompra('Diseño', 'Canva Pro Mensual (3$)')">Comprar Plan</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="section-heading">📺 Stella TV (Televisión en Vivo y Deportes)</div>
+        <div class="section-heading">📺 Televisión en Vivo, Deportes y Gaming</div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-header">
-                    <span class="product-title">Cuenta Completa TV</span>
+                    <span class="product-title">Stella TV (Cuenta Completa)</span>
                     <span class="product-badge">Stella TV</span>
                 </div>
                 <div class="product-body">
@@ -511,13 +620,14 @@
                     <div>
                         <div class="product-price">10$ <span>(Tasa BCV)</span></div>
                         <button class="btn-buy" onclick="prepararCompra('Stella TV', 'Cuenta Completa Stella TV (10$)')">Comprar Plan</button>
+                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h Stella TV')">Pedir Demo (12h)</button>
                     </div>
                 </div>
             </div>
 
             <div class="product-card">
                 <div class="product-card-header">
-                    <span class="product-title">1 Pantalla TV</span>
+                    <span class="product-title">Stella TV (1 Pantalla)</span>
                     <span class="product-badge">Stella TV</span>
                 </div>
                 <div class="product-body">
@@ -525,6 +635,36 @@
                     <div>
                         <div class="product-price">6$ <span>(Tasa BCV)</span></div>
                         <button class="btn-buy" onclick="prepararCompra('Stella TV', '1 Pantalla Stella TV (6$)')">Comprar Plan</button>
+                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h Stella TV')">Pedir Demo (12h)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card-header">
+                    <span class="product-title">Flujo TV</span>
+                    <span class="product-badge">IPTV</span>
+                </div>
+                <div class="product-body">
+                    <p class="product-desc">Excelente servicio de canales en alta definición, películas y series actualizadas.</p>
+                    <div>
+                        <div class="product-price">7$ <span>(Tasa BCV)</span></div>
+                        <button class="btn-buy" onclick="prepararCompra('Flujo TV', 'Flujo TV Mensual (7$)')">Comprar Plan</button>
+                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h Flujo TV')">Pedir Demo (12h)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-card-header">
+                    <span class="product-title">Recargas Free Fire</span>
+                    <span class="product-badge game">Gaming</span>
+                </div>
+                <div class="product-body">
+                    <p class="product-desc">Diamantes directos a tu ID de forma rápida y segura mediante Pago Móvil.</p>
+                    <div>
+                        <div class="product-price">Consultar <span>(Diamantes)</span></div>
+                        <button class="btn-buy game" onclick="prepararCompra('Free Fire', 'Recarga de Diamantes Free Fire')">Pedir Recarga</button>
                     </div>
                 </div>
             </div>
@@ -533,11 +673,11 @@
 
     <!-- 4. PANEL PERSONAL DE CADA CLIENTE -->
     <div class="client-panel" id="clientPanel">
-        <h2 style="font-size: 1.3rem; color: #e50914; margin-bottom: 15px; text-transform: uppercase;">📊 Mi Panel de Cliente</h2>
+        <h2 style="font-size: 1.3rem; color: #2ecc71; margin-bottom: 15px; text-transform: uppercase; text-shadow: 0 0 10px rgba(46,204,113,0.4);">📊 Mi Panel de Cliente</h2>
         
         <div class="client-info-card">
             <p style="font-size: 13px; color: #2ecc71; font-weight: bold;" id="panelClientEmail">Correo: </p>
-            <p style="font-size: 12px; color: #aaa; margin-top: 4px;" id="panelClientCedula">Cédula: </p>
+            <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;" id="panelClientCedula">Cédula: </p>
         </div>
 
         <p style="font-size: 12px; color: #fff; font-weight: bold; margin-bottom: 10px;">Mis servicios e historial:</p>
@@ -550,22 +690,22 @@
 
     <!-- 5. CHECKOUT / ENVÍO DE PAGO -->
     <div class="checkout-box" id="checkoutBox">
-        <h2 style="font-size: 1.3rem; color: #e50914; margin-bottom: 10px; text-transform: uppercase;" id="checkoutTitle">Confirmar Pedido</h2>
-        <p style="font-size: 12px; color: #ccc; margin-bottom: 15px;" id="checkoutPlanDesc">Plan</p>
+        <h2 style="font-size: 1.3rem; color: #2ecc71; margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 10px rgba(46,204,113,0.4);" id="checkoutTitle">Confirmar Pedido</h2>
+        <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 15px;" id="checkoutPlanDesc">Plan</p>
         
-        <div style="background: rgba(25,25,32,0.9); padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 12px; color: #ccc;">
+        <div style="background: rgba(5,12,8,0.9); border: 1px solid rgba(46,204,113,0.25); padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 12px; color: #cbd5e1;">
             <p><strong>Banco:</strong> Provincial</p>
-            <p><strong>Pago Móvil:</strong> 0412-XXXXXXX</p>
+            <p><strong>Pago Móvil:</strong> 0412-2753916</p>
             <p><strong>Cédula:</strong> V-XXXXXXXX</p>
         </div>
 
         <input type="email" id="checkoutEmail" class="input-field" placeholder="Tu correo" disabled>
         
-        <label style="font-size: 11px; color: #ddd; display: block; margin-bottom: 5px;">Adjuntar comprobante de pago:</label>
+        <label style="font-size: 11px; color: #cbd5e1; display: block; margin-bottom: 5px;">Adjuntar comprobante de pago:</label>
         <input type="file" id="checkoutFile" class="input-field" accept="image/*">
 
         <button class="btn-main" onclick="enviarPedidoWhatsApp()">Enviar Pedido por WhatsApp</button>
-        <button class="btn-main" style="background: #444; margin-top: 8px;" onclick="mostrarCatalogo()">Volver al Catálogo</button>
+        <button class="btn-main" style="background: #1e293b; color: #fff; border: 1px solid rgba(46,204,113,0.3); margin-top: 8px;" onclick="mostrarCatalogo()">Volver al Catálogo</button>
     </div>
 
     <!-- Script de Control Total -->
@@ -576,10 +716,8 @@
         window.onload = function() {
             actualizarBarraSuperior();
             if (usuarioLogueado) {
-                // Si ya inició sesión, mostrar directo el catálogo
                 mostrarCatalogo();
             } else {
-                // Si no ha iniciado sesión, mostrar la página principal estilo Netflix
                 ocultarTodo();
                 document.getElementById('homeHero').style.display = 'flex';
             }
@@ -671,6 +809,13 @@
             actualizarBarraSuperior();
         }
 
+        function cerrarSesion() {
+            usuarioLogueado = null;
+            localStorage.removeItem('panax_sesion_activa');
+            irAlInicio();
+            actualizarBarraSuperior();
+        }
+
         function mostrarCatalogo() {
             if(!usuarioLogueado) {
                 mostrarPantalla('loginScreen');
@@ -727,6 +872,29 @@
             document.getElementById('checkoutBox').style.display = 'block';
         }
 
+        function solicitarDemo(tipoDemo) {
+            if(!usuarioLogueado) {
+                mostrarPantalla('loginScreen');
+                return;
+            }
+
+            let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
+            if(baseDatos[usuarioLogueado]) {
+                baseDatos[usuarioLogueado].historial.unshift({
+                    fecha: new Date().toLocaleDateString(),
+                    servicio: "Solicitud de Demo",
+                    detalle: tipoDemo
+                });
+                localStorage.setItem('panax_base_clientes', JSON.stringify(baseDatos));
+            }
+
+            let numeroWhatsApp = "584262753916";
+            let mensaje = `Hola, soy el cliente ${usuarioLogueado} y quiero solicitar una *${tipoDemo}* para probar el servicio.`;
+
+            window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
+            abrirMiPanel();
+        }
+
         function enviarPedidoWhatsApp() {
             let fileInput = document.getElementById('checkoutFile');
             if(fileInput.files.length === 0) {
@@ -766,13 +934,6 @@
                     <button class="top-btn" onclick="mostrarPantalla('loginScreen')">Iniciar Sesión</button>
                 `;
             }
-        }
-
-        function cerrarSesion() {
-            usuarioLogueado = null;
-            localStorage.removeItem('panax_sesion_activa');
-            irAlInicio();
-            actualizarBarraSuperior();
         }
     </script>
 </body>

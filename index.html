@@ -13,11 +13,11 @@
         }
 
         body {
-            background-color: #050b07;
+            background-color: #0d0614;
             background-image: 
-                linear-gradient(to top, rgba(5, 11, 7, 0.82) 0%, rgba(5, 11, 7, 0.45) 50%, rgba(5, 11, 7, 0.82) 100%),
-                radial-gradient(circle at 50% 30%, rgba(46, 204, 113, 0.28) 0%, transparent 65%),
-                url('image_86fbbc.jpg');
+                linear-gradient(to top, rgba(13, 6, 20, 0.88) 0%, rgba(13, 6, 20, 0.5) 50%, rgba(13, 6, 20, 0.88) 100%),
+                radial-gradient(circle at 50% 40%, rgba(231, 76, 60, 0.25) 0%, rgba(52, 152, 219, 0.2) 40%, transparent 75%),
+                url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -49,21 +49,21 @@
             color: #3498db;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            text-shadow: 0 0 12px rgba(52, 152, 219, 0.6);
+            text-shadow: 0 0 12px rgba(52, 152, 219, 0.7);
         }
 
         .side-brand.flujo {
             color: #e67e22;
-            text-shadow: 0 0 12px rgba(230, 126, 34, 0.6);
+            text-shadow: 0 0 12px rgba(230, 126, 34, 0.7);
         }
 
         .brand-logo {
             font-size: 26px;
             font-weight: 900;
-            color: #2ecc71;
+            color: #e74c3c;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(46, 204, 113, 0.8), 0 0 5px rgba(0,0,0,0.9);
+            text-shadow: 0 0 20px rgba(231, 76, 60, 0.8), 0 0 5px rgba(0,0,0,0.9);
             cursor: pointer;
             text-align: center;
         }
@@ -74,36 +74,35 @@
         }
 
         .top-btn {
-            background: #2ecc71;
-            border: 1px solid #2ecc71;
-            color: #000;
+            background: #e74c3c;
+            border: 1px solid #e74c3c;
+            color: #fff;
             padding: 9px 20px;
             border-radius: 6px;
             font-size: 13px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
         }
 
         .top-btn:hover {
-            background: #27ae60;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.7);
+            background: #c0392b;
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.7);
         }
 
         .top-btn-secondary {
-            background: rgba(10, 20, 15, 0.85);
-            border: 1px solid rgba(46, 204, 113, 0.4);
-            color: #2ecc71;
+            background: rgba(15, 8, 20, 0.85);
+            border: 1px solid rgba(231, 76, 60, 0.4);
+            color: #e74c3c;
         }
 
         .top-btn-secondary:hover {
-            background: rgba(46, 204, 113, 0.2);
+            background: rgba(231, 76, 60, 0.2);
             color: #fff;
         }
 
-        /* Contenedor central con el nuevo eslogan y efecto reflejo */
+        /* Contenedor central temático con palomitas y lentes 3D */
         .main-hero {
             flex: 1;
             display: flex;
@@ -120,39 +119,28 @@
             font-size: 2.8rem;
             font-weight: 900;
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             letter-spacing: -0.5px;
             text-transform: uppercase;
-            text-shadow: 0 4px 25px rgba(0,0,0,0.95), 0 0 35px rgba(46,204,113,0.35);
+            text-shadow: 0 4px 25px rgba(0,0,0,0.95), 0 0 35px rgba(231,76,60,0.4);
         }
 
-        /* Efecto visual de reflejo inspirado en el capture */
-        .hero-reflection-box {
+        /* Contenedor visual central: Cine, Palomitas y Lentes 3D */
+        .cinema-feature-box {
             position: relative;
             margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
         }
 
-        .hero-reflection-box img {
+        .cinema-feature-box img {
             width: 100%;
-            max-width: 500px;
-            border-radius: 8px;
-            border: 1px solid rgba(46, 204, 113, 0.4);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.9), 0 0 20px rgba(46,204,113,0.3);
-        }
-
-        /* Simulación de reflejo inferior */
-        .hero-reflection-box::after {
-            content: '';
-            position: absolute;
-            bottom: -25px;
-            left: 0;
-            right: 0;
-            height: 30px;
-            background: linear-gradient(to bottom, rgba(46, 204, 113, 0.25), transparent);
-            filter: blur(8px);
-            transform: scaleY(-1);
-            opacity: 0.6;
-            pointer-events: none;
+            max-width: 480px;
+            border-radius: 10px;
+            border: 1px solid rgba(231, 76, 60, 0.4);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.9), 0 0 25px rgba(52, 152, 219, 0.3);
         }
 
         .hero-form {
@@ -169,22 +157,22 @@
             min-width: 280px;
             padding: 16px 20px;
             border-radius: 6px;
-            border: 1px solid rgba(46, 204, 113, 0.4);
-            background-color: rgba(10, 18, 13, 0.88);
+            border: 1px solid rgba(231, 76, 60, 0.4);
+            background-color: rgba(15, 8, 22, 0.88);
             backdrop-filter: blur(10px);
             color: #fff;
             font-size: 16px;
         }
 
         .hero-input:focus {
-            border-color: #2ecc71;
+            border-color: #e74c3c;
             outline: none;
-            box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
         }
 
         .hero-btn {
-            background: #2ecc71;
-            color: #000;
+            background: #e74c3c;
+            color: #fff;
             border: none;
             padding: 16px 32px;
             border-radius: 6px;
@@ -194,25 +182,24 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.2s;
-            box-shadow: 0 4px 25px rgba(46, 204, 113, 0.6);
+            box-shadow: 0 4px 25px rgba(231, 76, 60, 0.6);
         }
 
         .hero-btn:hover {
-            background: #27ae60;
-            color: #fff;
-            box-shadow: 0 6px 30px rgba(46, 204, 113, 0.9);
+            background: #c0392b;
+            box-shadow: 0 6px 30px rgba(231, 76, 60, 0.9);
         }
 
         /* Pantallas modales / Formularios */
         .screen-box {
             width: 100%;
             max-width: 440px;
-            background: rgba(10, 18, 13, 0.9);
+            background: rgba(15, 8, 22, 0.92);
             backdrop-filter: blur(25px);
             border-radius: 12px;
             padding: 35px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(46, 204, 113, 0.25);
-            border: 1px solid rgba(46, 204, 113, 0.35);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(231, 76, 60, 0.25);
+            border: 1px solid rgba(231, 76, 60, 0.35);
             margin: auto;
             text-align: center;
             display: none;
@@ -224,11 +211,11 @@
 
         .screen-box h2 {
             font-size: 1.5rem;
-            color: #2ecc71;
+            color: #e74c3c;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(46,204,113,0.4);
+            text-shadow: 0 0 10px rgba(231,76,60,0.4);
         }
 
         .screen-box p {
@@ -241,23 +228,23 @@
             width: 100%;
             padding: 13px;
             border-radius: 6px;
-            border: 1px solid rgba(46, 204, 113, 0.3);
-            background-color: rgba(5, 10, 7, 0.92);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            background-color: rgba(8, 4, 12, 0.92);
             color: #fff;
             margin-bottom: 12px;
             font-size: 14px;
         }
 
         .input-field:focus {
-            border-color: #2ecc71;
+            border-color: #e74c3c;
             outline: none;
-            box-shadow: 0 0 12px rgba(46,204,113,0.3);
+            box-shadow: 0 0 12px rgba(231,76,60,0.3);
         }
 
         .btn-main {
             width: 100%;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: #000;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
             border: none;
             padding: 13px;
             border-radius: 6px;
@@ -267,14 +254,13 @@
             text-transform: uppercase;
             letter-spacing: 1.5px;
             transition: all 0.2s;
-            box-shadow: 0 4px 20px rgba(46, 204, 113, 0.5);
+            box-shadow: 0 4px 20px rgba(231, 76, 60, 0.5);
             margin-top: 5px;
         }
 
         .btn-main:hover {
-            background: linear-gradient(135deg, #27ae60, #219653);
-            color: #fff;
-            box-shadow: 0 6px 25px rgba(46, 204, 113, 0.8);
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            box-shadow: 0 6px 25px rgba(231, 76, 60, 0.8);
         }
 
         /* Catálogo de Ventas */
@@ -286,14 +272,14 @@
         }
 
         .catalog-banner {
-            background: linear-gradient(135deg, rgba(10, 25, 15, 0.65), rgba(5, 10, 7, 0.85)), url('image_86fbbc.jpg');
+            background: linear-gradient(135deg, rgba(25, 10, 35, 0.75), rgba(8, 4, 12, 0.9)), url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             border-radius: 12px;
             padding: 35px;
             margin-bottom: 25px;
-            border: 1px solid rgba(46, 204, 113, 0.4);
-            box-shadow: 0 10px 35px rgba(0,0,0,0.8), 0 0 25px rgba(46,204,113,0.2);
+            border: 1px solid rgba(231, 76, 60, 0.4);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.8), 0 0 25px rgba(231,76,60,0.2);
         }
 
         .catalog-banner h2 {
@@ -315,7 +301,7 @@
             font-weight: bold;
             color: #fff;
             margin-bottom: 15px;
-            border-left: 5px solid #2ecc71;
+            border-left: 5px solid #e74c3c;
             padding-left: 12px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
@@ -328,27 +314,27 @@
         }
 
         .product-card {
-            background-color: rgba(10, 18, 13, 0.88);
+            background-color: rgba(15, 8, 22, 0.88);
             backdrop-filter: blur(15px);
             border-radius: 10px;
-            border: 1px solid rgba(46, 204, 113, 0.28);
+            border: 1px solid rgba(231, 76, 60, 0.28);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.7), 0 0 15px rgba(46,204,113,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7), 0 0 15px rgba(231,76,60,0.1);
             transition: transform 0.2s, border-color 0.2s;
         }
 
         .product-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(46, 204, 113, 0.7);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.8), 0 0 20px rgba(46,204,113,0.3);
+            border-color: rgba(231, 76, 60, 0.7);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.8), 0 0 20px rgba(231,76,60,0.3);
         }
 
         .product-card-header {
             padding: 18px;
-            background: linear-gradient(135deg, rgba(46,204,113,0.15), rgba(0,0,0,0.3));
-            border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+            background: linear-gradient(135deg, rgba(231,76,60,0.2), rgba(0,0,0,0.3));
+            border-bottom: 1px solid rgba(231, 76, 60, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -361,14 +347,14 @@
         }
 
         .product-badge {
-            background: rgba(46, 204, 113, 0.25);
-            color: #2ecc71;
+            background: rgba(231, 76, 60, 0.25);
+            color: #e74c3c;
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 10px;
             font-weight: bold;
             text-transform: uppercase;
-            border: 1px solid rgba(46,204,113,0.4);
+            border: 1px solid rgba(231,76,60,0.4);
         }
 
         .product-badge.game {
@@ -397,7 +383,7 @@
             font-weight: 900;
             color: #fff;
             margin-bottom: 12px;
-            text-shadow: 0 0 10px rgba(46,204,113,0.3);
+            text-shadow: 0 0 10px rgba(231,76,60,0.3);
         }
 
         .product-price span {
@@ -408,8 +394,8 @@
 
         .btn-buy {
             width: 100%;
-            background: #2ecc71;
-            color: #000;
+            background: #e74c3c;
+            color: #fff;
             border: none;
             padding: 11px;
             border-radius: 6px;
@@ -419,14 +405,13 @@
             font-size: 11px;
             letter-spacing: 1px;
             margin-bottom: 6px;
-            box-shadow: 0 2px 10px rgba(46,204,113,0.4);
+            box-shadow: 0 2px 10px rgba(231,76,60,0.4);
             transition: all 0.2s;
         }
 
         .btn-buy:hover {
-            background: #27ae60;
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(46,204,113,0.7);
+            background: #c0392b;
+            box-shadow: 0 4px 15px rgba(231,76,60,0.7);
         }
 
         .btn-buy.game {
@@ -437,9 +422,9 @@
 
         .btn-demo {
             width: 100%;
-            background: rgba(5, 10, 7, 0.8);
-            color: #2ecc71;
-            border: 1px solid rgba(46, 204, 113, 0.4);
+            background: rgba(15, 8, 22, 0.8);
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.4);
             padding: 8px;
             border-radius: 6px;
             font-weight: bold;
@@ -451,9 +436,9 @@
         }
 
         .btn-demo:hover {
-            background: rgba(46, 204, 113, 0.2);
+            background: rgba(231, 76, 60, 0.2);
             color: #fff;
-            border-color: #2ecc71;
+            border-color: #e74c3c;
         }
 
         /* Panel de Control del Cliente y Checkout */
@@ -462,17 +447,17 @@
             width: 100%;
             max-width: 600px;
             margin: 20px auto;
-            background: rgba(10, 18, 13, 0.92);
+            background: rgba(15, 8, 22, 0.92);
             backdrop-filter: blur(20px);
             border-radius: 12px;
             padding: 30px;
-            border: 1px solid rgba(46, 204, 113, 0.35);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 25px rgba(46,204,113,0.2);
+            border: 1px solid rgba(231, 76, 60, 0.35);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 25px rgba(231,76,60,0.2);
         }
 
         .client-info-card {
-            background: rgba(5, 12, 8, 0.9);
-            border: 1px solid rgba(46, 204, 113, 0.25);
+            background: rgba(8, 4, 12, 0.9);
+            border: 1px solid rgba(231, 76, 60, 0.25);
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -485,21 +470,21 @@
         }
 
         .history-item {
-            background: rgba(5, 10, 7, 0.95);
-            border-left: 4px solid #2ecc71;
+            background: rgba(8, 4, 12, 0.95);
+            border-left: 4px solid #e74c3c;
             border-radius: 6px;
             padding: 12px;
             margin-bottom: 10px;
             font-size: 12px;
-            border-top: 1px solid rgba(46,204,113,0.15);
-            border-right: 1px solid rgba(46,204,113,0.15);
-            border-bottom: 1px solid rgba(46,204,113,0.15);
+            border-top: 1px solid rgba(231,76,60,0.15);
+            border-right: 1px solid rgba(231,76,60,0.15);
+            border-bottom: 1px solid rgba(231,76,60,0.15);
         }
 
         input[type="file"].input-field {
             padding: 10px;
             color: #cbd5e1;
-            background-color: rgba(5, 10, 7, 0.95);
+            background-color: rgba(8, 4, 12, 0.95);
             cursor: pointer;
         }
     </style>
@@ -517,11 +502,12 @@
         </div>
     </div>
 
-    <!-- 0. PÁGINA PRINCIPAL CON EL ESLOGAN Y REFLEJO -->
+    <!-- 0. PÁGINA PRINCIPAL: SALA DE CINE, PALOMITAS Y LENTES 3D -->
     <div class="main-hero" id="homeHero">
         <h1>TV en vivo, series y películas de todas las plataformas al alcance de un solo clic</h1>
-        <div class="hero-reflection-box">
-            <img src="image_86fbbc.jpg" alt="PanaXtreaming Preview">
+        <div class="cinema-feature-box">
+            <!-- Imagen temática de sala de cine con palomitas en el centro y lentes 3D -->
+            <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=1000&auto=format&fit=crop" alt="Sala de Cine, Palomitas y Lentes 3D">
         </div>
         <div class="hero-form">
             <input type="email" id="heroEmail" class="hero-input" placeholder="Correo electrónico para empezar">
@@ -539,7 +525,7 @@
         <input type="password" id="reg-pass" class="input-field" placeholder="Contraseña (mínimo 6 caracteres)">
         
         <button class="btn-main" onclick="registrarCliente()">Registrarse y Entrar</button>
-        <p style="margin-top: 15px; font-size: 11px;">¿Ya tienes cuenta? <a href="javascript:void(0);" style="color: #2ecc71; font-weight: bold;" onclick="mostrarPantalla('loginScreen')">Inicia sesión aquí</a></p>
+        <p style="margin-top: 15px; font-size: 11px;">¿Ya tienes cuenta? <a href="javascript:void(0);" style="color: #e74c3c; font-weight: bold;" onclick="mostrarPantalla('loginScreen')">Inicia sesión aquí</a></p>
     </div>
 
     <!-- 2. PANTALLA DE INICIO DE SESIÓN -->
@@ -551,7 +537,7 @@
         <input type="password" id="login-pass" class="input-field" placeholder="Contraseña">
         
         <button class="btn-main" onclick="iniciarSesionCliente()">Entrar a mi Panel</button>
-        <p style="margin-top: 15px; font-size: 11px;">¿No tienes cuenta? <a href="javascript:void(0);" style="color: #2ecc71; font-weight: bold;" onclick="mostrarPantalla('registerScreen')">Regístrate gratis</a></p>
+        <p style="margin-top: 15px; font-size: 11px;">¿No tienes cuenta? <a href="javascript:void(0);" style="color: #e74c3c; font-weight: bold;" onclick="mostrarPantalla('registerScreen')">Regístrate gratis</a></p>
     </div>
 
     <!-- 3. PANEL DE CATÁLOGO DE VENTAS -->
@@ -561,7 +547,7 @@
             <p>Elige tu plan ideal. Realiza tu pago mediante Pago Móvil y envíalo al instante por WhatsApp para procesar tu activación.</p>
         </div>
 
-        <div class="section-heading">🟢 PanaXtreaming (Cuentas y Streaming)</div>
+        <div class="section-heading">🔴 PanaXtreaming (Cuentas y Streaming)</div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-header">
@@ -673,10 +659,10 @@
 
     <!-- 4. PANEL PERSONAL DE CADA CLIENTE -->
     <div class="client-panel" id="clientPanel">
-        <h2 style="font-size: 1.3rem; color: #2ecc71; margin-bottom: 15px; text-transform: uppercase; text-shadow: 0 0 10px rgba(46,204,113,0.4);">📊 Mi Panel de Cliente</h2>
+        <h2 style="font-size: 1.3rem; color: #e74c3c; margin-bottom: 15px; text-transform: uppercase; text-shadow: 0 0 10px rgba(231,76,60,0.4);">📊 Mi Panel de Cliente</h2>
         
         <div class="client-info-card">
-            <p style="font-size: 13px; color: #2ecc71; font-weight: bold;" id="panelClientEmail">Correo: </p>
+            <p style="font-size: 13px; color: #e74c3c; font-weight: bold;" id="panelClientEmail">Correo: </p>
             <p style="font-size: 12px; color: #cbd5e1; margin-top: 4px;" id="panelClientCedula">Cédula: </p>
         </div>
 
@@ -690,10 +676,10 @@
 
     <!-- 5. CHECKOUT / ENVÍO DE PAGO -->
     <div class="checkout-box" id="checkoutBox">
-        <h2 style="font-size: 1.3rem; color: #2ecc71; margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 10px rgba(46,204,113,0.4);" id="checkoutTitle">Confirmar Pedido</h2>
+        <h2 style="font-size: 1.3rem; color: #e74c3c; margin-bottom: 10px; text-transform: uppercase; text-shadow: 0 0 10px rgba(231,76,60,0.4);" id="checkoutTitle">Confirmar Pedido</h2>
         <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 15px;" id="checkoutPlanDesc">Plan</p>
         
-        <div style="background: rgba(5,12,8,0.9); border: 1px solid rgba(46,204,113,0.25); padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 12px; color: #cbd5e1;">
+        <div style="background: rgba(8,4,12,0.9); border: 1px solid rgba(231,76,60,0.25); padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 12px; color: #cbd5e1;">
             <p><strong>Banco:</strong> Provincial</p>
             <p><strong>Pago Móvil:</strong> 0412-2753916</p>
             <p><strong>Cédula:</strong> V-XXXXXXXX</p>
@@ -705,7 +691,7 @@
         <input type="file" id="checkoutFile" class="input-field" accept="image/*">
 
         <button class="btn-main" onclick="enviarPedidoWhatsApp()">Enviar Pedido por WhatsApp</button>
-        <button class="btn-main" style="background: #1e293b; color: #fff; border: 1px solid rgba(46,204,113,0.3); margin-top: 8px;" onclick="mostrarCatalogo()">Volver al Catálogo</button>
+        <button class="btn-main" style="background: #1e293b; color: #fff; border: 1px solid rgba(231,76,60,0.3); margin-top: 8px;" onclick="mostrarCatalogo()">Volver al Catálogo</button>
     </div>
 
     <!-- Script de Control Total -->
@@ -848,7 +834,7 @@
             datosUser.historial.forEach(item => {
                 htmlHistorial += `
                     <div class="history-item">
-                        <strong>🟢 ${item.servicio}</strong><br>
+                        <strong>🔴 ${item.servicio}</strong><br>
                         📅 Fecha: ${item.fecha} | Detalle: ${item.detalle}
                     </div>
                 `;
@@ -866,9 +852,8 @@
             planElegido = plan;
             ocultarTodo();
             document.getElementById('checkoutTitle').innerText = `Comprar: ${servicio}`;
-            document.getElementById('checkoutPlanDesc').innerText = `Plan: ${plan}`;
+            document.getElementById('checkoutPlanDesc').innerText = `Plan seleccionado: ${plan}`;
             document.getElementById('checkoutEmail').value = usuarioLogueado;
-            document.getElementById('checkoutFile').value = "";
             document.getElementById('checkoutBox').style.display = 'block';
         }
 
@@ -877,59 +862,36 @@
                 mostrarPantalla('loginScreen');
                 return;
             }
-
-            let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
-            if(baseDatos[usuarioLogueado]) {
-                baseDatos[usuarioLogueado].historial.unshift({
-                    fecha: new Date().toLocaleDateString(),
-                    servicio: "Solicitud de Demo",
-                    detalle: tipoDemo
-                });
-                localStorage.setItem('panax_base_clientes', JSON.stringify(baseDatos));
-            }
-
-            let numeroWhatsApp = "584262753916";
-            let mensaje = `Hola, soy el cliente ${usuarioLogueado} y quiero solicitar una *${tipoDemo}* para probar el servicio.`;
-
-            window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
-            abrirMiPanel();
+            let mensaje = `Hola PanaXtreaming, soy el usuario ${usuarioLogueado} y quiero solicitar mi ${tipoDemo}.`;
+            window.open(`https://wa.me/584122753916?text=${encodeURIComponent(mensaje)}`, '_blank');
         }
 
         function enviarPedidoWhatsApp() {
-            let fileInput = document.getElementById('checkoutFile');
-            if(fileInput.files.length === 0) {
-                alert("Por favor, adjunta la imagen del comprobante de pago.");
-                return;
-            }
-
-            let archivoNombre = fileInput.files[0].name;
+            let mensaje = `Hola PanaXtreaming, he realizado el pago para mi plan: ${planElegido}. Mi correo registrado es: ${usuarioLogueado}. Adjunto mi comprobante de pago.`;
+            window.open(`https://wa.me/584122753916?text=${encodeURIComponent(mensaje)}`, '_blank');
             
             let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
             if(baseDatos[usuarioLogueado]) {
-                baseDatos[usuarioLogueado].historial.unshift({
+                baseDatos[usuarioLogueado].historial.push({
                     fecha: new Date().toLocaleDateString(),
-                    servicio: "Compra de Plan",
+                    servicio: "Compra Solicitada",
                     detalle: planElegido
                 });
                 localStorage.setItem('panax_base_clientes', JSON.stringify(baseDatos));
             }
 
-            let numeroWhatsApp = "584262753916";
-            let mensaje = `Hola, quiero verificar mi pago:%0A- *Cliente:* ${usuarioLogueado}%0A- *Plan:* ${planElegido}%0A- *Comprobante:* ${archivoNombre}`;
-
-            window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
             abrirMiPanel();
         }
 
         function actualizarBarraSuperior() {
-            let nav = document.getElementById('topNavButtons');
+            let topBtns = document.getElementById('topNavButtons');
             if(usuarioLogueado) {
-                nav.innerHTML = `
-                    <button class="top-btn top-btn-secondary" onclick="abrirMiPanel()">👤 Mi Panel</button>
-                    <button class="top-btn" onclick="cerrarSesion()">Salir</button>
+                topBtns.innerHTML = `
+                    <button class="top-btn top-btn-secondary" onclick="abrirMiPanel()">Mi Panel</button>
+                    <button class="top-btn" style="background: #e74c3c; color: #fff;" onclick="cerrarSesion()">Salir</button>
                 `;
             } else {
-                nav.innerHTML = `
+                topBtns.innerHTML = `
                     <button class="top-btn top-btn-secondary" onclick="mostrarPantalla('registerScreen')">Registrarse</button>
                     <button class="top-btn" onclick="mostrarPantalla('loginScreen')">Iniciar Sesión</button>
                 `;

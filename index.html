@@ -14,7 +14,6 @@
 
         body {
             background-color: #000000;
-            /* Fondo con la sala de cine más visible, usando un filtro mucho más claro para resaltar el fondo */
             background-image: 
                 linear-gradient(to bottom, rgba(15, 15, 15, 0.45), rgba(5, 5, 5, 0.75)),
                 url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1920&auto=format&fit=crop');
@@ -36,7 +35,7 @@
             }
         }
 
-        /* Barra superior responsiva */
+        /* Barra superior */
         .top-nav {
             width: 100%;
             max-width: 1200px;
@@ -90,6 +89,7 @@
         .top-btns {
             display: flex;
             gap: 8px;
+            align-items: center;
         }
 
         .top-btn {
@@ -121,7 +121,26 @@
             border-color: #e50914;
         }
 
-        /* Contenedor central principal responsivo */
+        .top-btn-admin {
+            background: #27ae60;
+            border-color: #27ae60;
+        }
+
+        .top-btn-admin:hover {
+            background: #219653;
+        }
+
+        .wallet-badge {
+            background: rgba(39, 174, 96, 0.2);
+            border: 1px solid #27ae60;
+            color: #2ecc71;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Pantalla Principal */
         .main-hero {
             flex: 1;
             display: flex;
@@ -151,7 +170,6 @@
             }
         }
 
-        /* Recuadro central destacado con la imagen de la claqueta y palomitas */
         .hero-card-preview {
             width: 100%;
             max-width: 580px;
@@ -217,7 +235,7 @@
             background: #b20710;
         }
 
-        /* Pantallas modales / Formularios responsivos */
+        /* Pantallas modales / Formularios */
         .screen-box {
             width: 100%;
             max-width: 440px;
@@ -294,7 +312,7 @@
             background: #b20710;
         }
 
-        /* Catálogo de Ventas responsivo */
+        /* Catálogo */
         .catalog-view {
             display: none;
             width: 100%;
@@ -312,6 +330,11 @@
             margin-bottom: 30px;
             border: 1px solid rgba(229, 9, 20, 0.4);
             box-shadow: 0 10px 35px rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         @media (min-width: 768px) {
@@ -321,21 +344,21 @@
         }
 
         .catalog-banner h2 {
-            font-size: 1.6rem;
-            margin-bottom: 8px;
+            font-size: 1.5rem;
+            margin-bottom: 6px;
             color: #fff;
         }
 
         @media (min-width: 768px) {
             .catalog-banner h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
         }
 
         .catalog-banner p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #ccc;
-            max-width: 600px;
+            max-width: 550px;
         }
 
         .section-heading {
@@ -475,13 +498,13 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* Panel de Control y Checkout responsivos */
-        .client-panel, .checkout-box {
+        /* Paneles de Usuario, Checkout y Admin */
+        .client-panel, .checkout-box, .admin-panel {
             display: none;
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             margin: 20px auto;
-            background: rgba(15, 15, 15, 0.92);
+            background: rgba(15, 15, 15, 0.95);
             border-radius: 8px;
             padding: 20px;
             border: 1px solid rgba(229, 9, 20, 0.4);
@@ -489,7 +512,7 @@
         }
 
         @media (min-width: 768px) {
-            .client-panel, .checkout-box {
+            .client-panel, .checkout-box, .admin-panel {
                 padding: 30px;
             }
         }
@@ -500,6 +523,11 @@
             padding: 15px;
             border-radius: 6px;
             margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .history-list {
@@ -518,12 +546,64 @@
             border-left: 4px solid #e50914;
         }
 
-        input[type="file"].input-field {
-            padding: 10px;
-            color: #ccc;
-            background-color: #121212;
-            cursor: pointer;
+        /* Panel de Administrador */
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 20px;
         }
+
+        .stat-card {
+            background: #121212;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 1.4rem;
+            color: #e50914;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 11px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 12px;
+            background: #121212;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #222;
+        }
+
+        .admin-table th {
+            background: #1a1a1a;
+            color: #e50914;
+        }
+
+        .badge-status {
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .badge-status.pending { background: #f39c12; color: #000; }
+        .badge-status.active { background: #27ae60; color: #fff; }
     </style>
 </head>
 <body>
@@ -543,7 +623,6 @@
     <div class="main-hero" id="homeHero">
         <h1>Películas, series ilimitadas y mucho más, en un solo lugar</h1>
         
-        <!-- Cuadro con la imagen de la claqueta y palomitas -->
         <div class="hero-card-preview">
             <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?q=80&w=1000&auto=format&fit=crop" alt="PanaXtreaming Cine">
         </div>
@@ -551,6 +630,10 @@
         <div class="hero-form">
             <input type="email" id="heroEmail" class="hero-input" placeholder="Correo electrónico para empezar">
             <button class="hero-btn" onclick="empezarRegistroHero()">Comenzar &gt;</button>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <a href="javascript:void(0);" onclick="pedirClaveAdmin()" style="color: #666; font-size: 11px; text-decoration: none;">🔐 Acceso Administrador</a>
         </div>
     </div>
 
@@ -579,11 +662,14 @@
         <p style="margin-top: 15px; font-size: 11px;">¿Nueva cuenta? <a href="javascript:void(0);" style="color: #e50914; font-weight: bold;" onclick="mostrarPantalla('registerScreen')">Suscríbete ahora</a></p>
     </div>
 
-    <!-- 3. PANEL DE CATÁLOGO DE VENTAS -->
+    <!-- 3. CATÁLOGO DE VENTAS -->
     <div class="catalog-view" id="catalogView">
         <div class="catalog-banner">
-            <h2>Películas, Series y TV en Vivo</h2>
-            <p>Elige tu plan favorito. Realiza tu pago por Pago Móvil y envíalo al instante por WhatsApp para una activación inmediata.</p>
+            <div>
+                <h2>Películas, Series y TV en Vivo</h2>
+                <p>Compra con tu saldo disponible o reporta tu pago móvil para recargar saldo al instante.</p>
+            </div>
+            <div id="catalogWalletBadge" class="wallet-badge">Saldo: $0.00</div>
         </div>
 
         <div class="section-heading">🔴 PanaXtreaming (Cuentas y Streaming)</div>
@@ -597,8 +683,8 @@
                     <p class="product-desc">Acceso total con máxima estabilidad y perfiles privados garantizados.</p>
                     <div>
                         <div class="product-price">8$ <span>(Tasa BCV)</span></div>
-                        <button class="btn-buy" onclick="prepararCompra('PanaXtreaming', 'Cuenta Completa PanaXtreaming (8$)')">Comprar Plan</button>
-                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h PanaXtreaming')">Pedir Demo (12h)</button>
+                        <button class="btn-buy" onclick="comprarDirectoConSaldo('Cuenta Completa PanaXtreaming', 8)">Comprar con Saldo</button>
+                        <button class="btn-demo" onclick="prepararRecarga(8, 'Recarga de Saldo - Cuenta Completa PanaXtreaming ($8)')">Reportar Pago ($8)</button>
                     </div>
                 </div>
             </div>
@@ -612,8 +698,8 @@
                     <p class="product-desc">Disfruta de tu perfil individual en tu dispositivo preferido.</p>
                     <div>
                         <div class="product-price">4$ <span>(Tasa BCV)</span></div>
-                        <button class="btn-buy" onclick="prepararCompra('PanaXtreaming', '1 Pantalla PanaXtreaming (4$)')">Comprar Plan</button>
-                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h PanaXtreaming')">Pedir Demo (12h)</button>
+                        <button class="btn-buy" onclick="comprarDirectoConSaldo('1 Pantalla PanaXtreaming', 4)">Comprar con Saldo</button>
+                        <button class="btn-demo" onclick="prepararRecarga(4, 'Recarga de Saldo - 1 Pantalla PanaXtreaming ($4)')">Reportar Pago ($4)</button>
                     </div>
                 </div>
             </div>
@@ -624,10 +710,11 @@
                     <span class="product-badge">Diseño</span>
                 </div>
                 <div class="product-body">
-                    <p class="product-desc">Acceso completo a herramientas premium, plantillas y recursos ilimitados de diseño.</p>
+                    <p class="product-desc">Acceso completo a herramientas premium, plantillas y recursos ilimitados.</p>
                     <div>
                         <div class="product-price">3$ <span>(Tasa BCV)</span></div>
-                        <button class="btn-buy" onclick="prepararCompra('Diseño', 'Canva Pro Mensual (3$)')">Comprar Plan</button>
+                        <button class="btn-buy" onclick="comprarDirectoConSaldo('Canva Pro Mensual', 3)">Comprar con Saldo</button>
+                        <button class="btn-demo" onclick="prepararRecarga(3, 'Recarga de Saldo - Canva Pro ($3)')">Reportar Pago ($3)</button>
                     </div>
                 </div>
             </div>
@@ -644,8 +731,8 @@
                     <p class="product-desc">Toda la programación en vivo y deportes sin ningún límite.</p>
                     <div>
                         <div class="product-price">10$ <span>(Tasa BCV)</span></div>
-                        <button class="btn-buy" onclick="prepararCompra('ST3TLLA TV', 'Cuenta Completa ST3TLLA TV (10$)')">Comprar Plan</button>
-                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h ST3TLLA TV')">Pedir Demo (12h)</button>
+                        <button class="btn-buy" onclick="comprarDirectoConSaldo('Cuenta Completa ST3TLLA TV', 10)">Comprar con Saldo</button>
+                        <button class="btn-demo" onclick="prepararRecarga(10, 'Recarga de Saldo - ST3TLLA TV Completa ($10)')">Reportar Pago ($10)</button>
                     </div>
                 </div>
             </div>
@@ -659,8 +746,8 @@
                     <p class="product-desc">Acceso a pantalla exclusiva para televisión en vivo y eventos.</p>
                     <div>
                         <div class="product-price">6$ <span>(Tasa BCV)</span></div>
-                        <button class="btn-buy" onclick="prepararCompra('ST3TLLA TV', '1 Pantalla ST3TLLA TV (6$)')">Comprar Plan</button>
-                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h ST3TLLA TV')">Pedir Demo (12h)</button>
+                        <button class="btn-buy" onclick="comprarDirectoConSaldo('1 Pantalla ST3TLLA TV', 6)">Comprar con Saldo</button>
+                        <button class="btn-demo" onclick="prepararRecarga(6, 'Recarga de Saldo - 1 Pantalla ST3TLLA TV ($6)')">Reportar Pago ($6)</button>
                     </div>
                 </div>
             </div>
@@ -671,25 +758,11 @@
                     <span class="product-badge">IPTV</span>
                 </div>
                 <div class="product-body">
-                    <p class="product-desc">Excelente servicio de canales en alta definición, películas y series actualizadas.</p>
+                    <p class="product-desc">Excelente servicio de canales en alta definición, películas y series.</p>
                     <div>
                         <div class="product-price">7$ <span>(Tasa BCV)</span></div>
-                        <button class="btn-buy" onclick="prepararCompra('F1UJO TV', 'F1UJO TV Mensual (7$)')">Comprar Plan</button>
-                        <button class="btn-demo" onclick="solicitarDemo('Demo 12h F1UJO TV')">Pedir Demo (12h)</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-card-header">
-                    <span class="product-title">Recargas Free Fire</span>
-                    <span class="product-badge game">Gaming</span>
-                </div>
-                <div class="product-body">
-                    <p class="product-desc">Diamantes directos a tu ID de forma rápida y segura mediante Pago Móvil.</p>
-                    <div>
-                        <div class="product-price">Consultar <span>(Diamantes)</span></div>
-                        <button class="btn-buy game" onclick="prepararCompra('Free Fire', 'Recarga de Diamantes Free Fire')">Pedir Recarga</button>
+                        <button class="btn-buy" onclick="comprarDirectoConSaldo('F1UJO TV Mensual', 7)">Comprar con Saldo</button>
+                        <button class="btn-demo" onclick="prepararRecarga(7, 'Recarga de Saldo - F1UJO TV ($7)')">Reportar Pago ($7)</button>
                     </div>
                 </div>
             </div>
@@ -698,25 +771,29 @@
 
     <!-- 4. PANEL PERSONAL DE CADA CLIENTE -->
     <div class="client-panel" id="clientPanel">
-        <h2 style="font-size: 1.3rem; color: #fff; margin-bottom: 15px; text-transform: uppercase;">📊 Mi Panel de Cliente</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+            <h2 style="font-size: 1.3rem; color: #fff; text-transform: uppercase;">📊 Mi Panel de Cliente</h2>
+            <div id="panelWalletBadge" class="wallet-badge">Saldo Disponible: $0.00</div>
+        </div>
         
         <div class="client-info-card">
-            <p style="font-size: 13px; color: #e50914; font-weight: bold;" id="panelClientEmail">Correo: </p>
-            <p style="font-size: 12px; color: #aaa; margin-top: 4px;" id="panelClientCedula">Cédula: </p>
+            <div>
+                <p style="font-size: 13px; color: #e50914; font-weight: bold;" id="panelClientEmail">Correo: </p>
+                <p style="font-size: 12px; color: #aaa; margin-top: 4px;" id="panelClientCedula">Cédula: </p>
+            </div>
+            <button class="top-btn" onclick="prepararRecargaPersonalizada()">+ Recargar Saldo</button>
         </div>
 
-        <p style="font-size: 12px; color: #fff; font-weight: bold; margin-bottom: 10px;">Mis servicios e historial:</p>
-        <div class="history-list" id="clientHistoryList">
-            <!-- Se llena dinámicamente -->
-        </div>
+        <p style="font-size: 12px; color: #fff; font-weight: bold; margin-bottom: 10px;">Mis servicios e historial de transacciones:</p>
+        <div class="history-list" id="clientHistoryList"></div>
 
         <button class="btn-main" onclick="mostrarCatalogo()">Ir al Catálogo de Compras</button>
     </div>
 
-    <!-- 5. CHECKOUT / ENVÍO DE PAGO -->
+    <!-- 5. CHECKOUT / REPORTE DE PAGO -->
     <div class="checkout-box" id="checkoutBox">
-        <h2 style="font-size: 1.3rem; color: #fff; margin-bottom: 10px; text-transform: uppercase;" id="checkoutTitle">Confirmar Pedido</h2>
-        <p style="font-size: 12px; color: #aaa; margin-bottom: 15px;" id="checkoutPlanDesc">Plan</p>
+        <h2 style="font-size: 1.3rem; color: #fff; margin-bottom: 10px; text-transform: uppercase;" id="checkoutTitle">Reportar Pago Móvil</h2>
+        <p style="font-size: 12px; color: #aaa; margin-bottom: 15px;" id="checkoutPlanDesc">Recarga de Saldo</p>
         
         <div style="background: #121212; border: 1px solid #333; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-size: 12px; color: #ccc;">
             <p><strong>Banco:</strong> Provincial</p>
@@ -726,21 +803,77 @@
 
         <input type="email" id="checkoutEmail" class="input-field" placeholder="Tu correo" disabled>
         
-        <label style="font-size: 11px; color: #aaa; display: block; margin-bottom: 5px;">Adjuntar comprobante de pago:</label>
-        <input type="file" id="checkoutFile" class="input-field" accept="image/*">
+        <label style="font-size: 11px; color: #aaa; display: block; margin-bottom: 5px;">Referencia del Pago Móvil:</label>
+        <input type="text" id="checkoutRef" class="input-field" placeholder="Ej: Últimos 4 dígitos del pago móvil">
 
-        <button class="btn-main" onclick="enviarPedidoWhatsApp()">Enviar Pedido por WhatsApp</button>
+        <button class="btn-main" onclick="enviarReportePagoWhatsApp()">Enviar Reporte al Admin</button>
         <button class="btn-main" style="background: #222; color: #fff; border: 1px solid #444; margin-top: 8px;" onclick="mostrarCatalogo()">Volver al Catálogo</button>
     </div>
 
-    <!-- Script de Control Total -->
+    <!-- 6. PANEL DE ADMINISTRADOR EXCLUSIVO -->
+    <div class="admin-panel" id="adminPanel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 style="font-size: 1.3rem; color: #27ae60; text-transform: uppercase;">🛡️ Panel de Administración</h2>
+            <button class="top-btn" style="background: #444; border-color: #555;" onclick="cerrarSesionAdmin()">Salir de Admin</button>
+        </div>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3 id="statTotalUsers">0</h3>
+                <p>Clientes Registrados</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="statTotalOrders">0</h3>
+                <p>Solicitudes Pendientes</p>
+            </div>
+        </div>
+
+        <p style="font-size: 12px; color: #fff; font-weight: bold; margin-bottom: 10px;">Aprobar Recargas y Asignar Saldo a Clientes:</p>
+        <div style="max-height: 250px; overflow-y: auto;">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Solicitud / Monto</th>
+                        <th>Ref</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="adminOrdersTableBody">
+                    <!-- Se llena con JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <p style="font-size: 12px; color: #fff; font-weight: bold; margin-top: 20px; margin-bottom: 10px;">Listado de Clientes y Saldos Actuales:</p>
+        <div style="max-height: 200px; overflow-y: auto;">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>Correo</th>
+                        <th>Cédula</th>
+                        <th>Saldo Actual</th>
+                    </tr>
+                </thead>
+                <tbody id="adminClientsTableBody">
+                    <!-- Se llena con JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Script de Control y Administración con Billetera -->
     <script>
         let usuarioLogueado = localStorage.getItem('panax_sesion_activa') || null;
-        let planElegido = "";
+        let adminLogueado = localStorage.getItem('panax_admin_activo') || false;
+        let montoSeleccionado = 0;
+        let conceptoSeleccionado = "";
 
         window.onload = function() {
             actualizarBarraSuperior();
-            if (usuarioLogueado) {
+            if (adminLogueado === "true") {
+                abrirPanelAdmin();
+            } else if (usuarioLogueado) {
                 mostrarCatalogo();
             } else {
                 ocultarTodo();
@@ -755,6 +888,7 @@
             document.getElementById('catalogView').style.display = 'none';
             document.getElementById('clientPanel').style.display = 'none';
             document.getElementById('checkoutBox').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'none';
         }
 
         function mostrarPantalla(idPantalla) {
@@ -764,7 +898,9 @@
 
         function irAlInicio() {
             ocultarTodo();
-            if (usuarioLogueado) {
+            if (adminLogueado === "true") {
+                abrirPanelAdmin();
+            } else if (usuarioLogueado) {
                 mostrarCatalogo();
             } else {
                 document.getElementById('homeHero').style.display = 'flex';
@@ -800,8 +936,9 @@
             baseDatos[email] = {
                 cedula: cedula,
                 pass: pass,
+                saldo: 0.00,
                 historial: [
-                    { fecha: new Date().toLocaleDateString(), servicio: "Registro Exitoso", detalle: "Bienvenido a la plataforma" }
+                    { fecha: new Date().toLocaleDateString(), servicio: "Registro Exitoso", detalle: "Cuenta creada en el sistema", estado: "Completado" }
                 ]
             };
 
@@ -847,6 +984,7 @@
                 return;
             }
             ocultarTodo();
+            actualizarSaldosVisuales();
             document.getElementById('catalogView').style.display = 'block';
             actualizarBarraSuperior();
         }
@@ -868,12 +1006,14 @@
 
             document.getElementById('panelClientEmail').innerText = `Correo: ${usuarioLogueado}`;
             document.getElementById('panelClientCedula').innerText = `Cédula: ${datosUser.cedula}`;
+            document.getElementById('panelWalletBadge').innerText = `Saldo Disponible: $${(datosUser.saldo || 0).toFixed(2)}`;
 
             let htmlHistorial = "";
             datosUser.historial.forEach(item => {
+                let badgeClass = item.estado === 'Completado' || item.estado === 'Aprobado' ? 'active' : 'pending';
                 htmlHistorial += `
                     <div class="history-item">
-                        <strong>🔴 ${item.servicio}</strong><br>
+                        <strong>🔴 ${item.servicio}</strong> <span class="badge-status ${badgeClass}">${item.estado || 'Pendiente'}</span><br>
                         📅 Fecha: ${item.fecha} | Detalle: ${item.detalle}
                     </div>
                 `;
@@ -883,49 +1023,189 @@
             actualizarBarraSuperior();
         }
 
-        function prepararCompra(servicio, plan) {
+        function actualizarSaldosVisuales() {
+            let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
+            if(usuarioLogueado && baseDatos[usuarioLogueado]) {
+                let saldo = baseDatos[usuarioLogueado].saldo || 0;
+                let badge = document.getElementById('catalogWalletBadge');
+                if(badge) badge.innerText = `Saldo: $${saldo.toFixed(2)}`;
+            }
+        }
+
+        function prepararRecarga(monto, concepto) {
             if(!usuarioLogueado) {
                 mostrarPantalla('loginScreen');
                 return;
             }
-            planElegido = plan;
+            montoSeleccionado = monto;
+            conceptoSeleccionado = concepto;
             ocultarTodo();
-            document.getElementById('checkoutTitle').innerText = `Comprar: ${servicio}`;
-            document.getElementById('checkoutPlanDesc').innerText = `Plan seleccionado: ${plan}`;
+            document.getElementById('checkoutTitle').innerText = `Reportar Recarga de $${monto}`;
+            document.getElementById('checkoutPlanDesc').innerText = concepto;
             document.getElementById('checkoutEmail').value = usuarioLogueado;
             document.getElementById('checkoutBox').style.display = 'block';
         }
 
-        function solicitarDemo(tipoDemo) {
-            if(!usuarioLogueado) {
-                mostrarPantalla('loginScreen');
+        function prepararRecargaPersonalizada() {
+            let montoStr = prompt("¿Qué monto en dólares ($) deseas recargar a tu cuenta?");
+            let monto = parseFloat(montoStr);
+            if(isNaN(monto) || monto <= 0) {
+                alert("Monto inválido.");
                 return;
             }
-            let mensaje = `Hola PanaXtreaming, soy el usuario ${usuarioLogueado} y quiero solicitar mi ${tipoDemo}.`;
-            window.open(`https://wa.me/584122753916?text=${encodeURIComponent(mensaje)}`, '_blank');
+            prepararRecarga(monto, `Recarga general de saldo ($${monto})`);
         }
 
-        function enviarPedidoWhatsApp() {
-            let mensaje = `Hola PanaXtreaming, he realizado el pago para mi plan: ${planElegido}. Mi correo registrado es: ${usuarioLogueado}. Adjunto mi comprobante de pago.`;
-            window.open(`https://wa.me/584122753916?text=${encodeURIComponent(mensaje)}`, '_blank');
+        function enviarReportePagoWhatsApp() {
+            let referencia = document.getElementById('checkoutRef').value.trim() || "Pago Móvil";
+            let mensaje = `Hola PanaXtreaming, he realizado un pago móvil por $${montoSeleccionado} para recargar mi saldo. Ref: ${referencia}. Correo: ${usuarioLogueado}.`;
             
             let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
             if(baseDatos[usuarioLogueado]) {
                 baseDatos[usuarioLogueado].historial.push({
                     fecha: new Date().toLocaleDateString(),
-                    servicio: "Compra Solicitada",
-                    detalle: planElegido
+                    monto: montoSeleccionado,
+                    servicio: `Recarga de Saldo ($${montoSeleccionado})`,
+                    detalle: `Ref: ${referencia}`,
+                    estado: "Pendiente"
                 });
                 localStorage.setItem('panax_base_clientes', JSON.stringify(baseDatos));
             }
 
+            window.open(`https://wa.me/584122753916?text=${encodeURIComponent(mensaje)}`, '_blank');
             abrirMiPanel();
+        }
+
+        function comprarDirectoConSaldo(nombreServicio, precio) {
+            if(!usuarioLogueado) {
+                mostrarPantalla('loginScreen');
+                return;
+            }
+
+            let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
+            let usuario = baseDatos[usuarioLogueado];
+
+            if((usuario.saldo || 0) < precio) {
+                alert(`Saldo insuficiente. Tienes $${(usuario.saldo || 0).toFixed(2)} y el plan cuesta $${precio}. Por favor reporta una recarga.`);
+                prepararRecarga(precio, `Recarga para comprar ${nombreServicio}`);
+                return;
+            }
+
+            if(confirm(`¿Deseas comprar "${nombreServicio}" por $${precio} usando tu saldo disponible?`)) {
+                usuario.saldo -= precio;
+                usuario.historial.push({
+                    fecha: new Date().toLocaleDateString(),
+                    servicio: nombreServicio,
+                    detalle: `Compra exitosa con saldo de billetera ($${precio})`,
+                    estado: "Completado"
+                });
+
+                localStorage.setItem('panax_base_clientes', JSON.stringify(baseDatos));
+                alert(`¡Compra realizada con éxito! Tu servicio de ${nombreServicio} está activo.`);
+                abrirMiPanel();
+            }
+        }
+
+        /* --- FUNCIONES DE ADMINISTRACIÓN --- */
+        function pedirClaveAdmin() {
+            let clave = prompt("Ingresa la contraseña de Administrador:");
+            if (clave === "admin1234") {
+                adminLogueado = "true";
+                localStorage.setItem('panax_admin_activo', "true");
+                abrirPanelAdmin();
+                actualizarBarraSuperior();
+            } else if (clave !== null) {
+                alert("Contraseña incorrecta.");
+            }
+        }
+
+        function abrirPanelAdmin() {
+            ocultarTodo();
+            let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
+            
+            let totalUsers = Object.keys(baseDatos).length;
+            let totalPending = 0;
+            let htmlOrders = "";
+            let htmlClients = "";
+
+            for (let email in baseDatos) {
+                let user = baseDatos[email];
+                htmlClients += `<tr><td>${email}</td><td>${user.cedula}</td><td><strong>$${(user.saldo || 0).toFixed(2)}</strong></td></tr>`;
+                
+                user.historial.forEach((item, index) => {
+                    if(item.estado === "Pendiente") {
+                        totalPending++;
+                        let montoObj = item.monto || 5; // Monto por defecto si es manual
+                        
+                        htmlOrders += `
+                            <tr>
+                                <td>${email}</td>
+                                <td>${item.servicio}</td>
+                                <td>${item.detalle}</td>
+                                <td>
+                                    <button class="top-btn top-btn-admin" style="padding:5px 10px; font-size:10px;" onclick="aprobarRecarga('${email}', ${index})">Aprobar Saldo</button>
+                                </td>
+                            </tr>
+                        `;
+                    }
+                });
+            }
+
+            document.getElementById('statTotalUsers').innerText = totalUsers;
+            document.getElementById('statTotalOrders').innerText = totalPending;
+            document.getElementById('adminOrdersTableBody').innerHTML = htmlOrders || `<tr><td colspan="4" style="text-align:center; color:#777;">No hay solicitudes pendientes.</td></tr>`;
+            document.getElementById('adminClientsTableBody').innerHTML = htmlClients || `<tr><td colspan="3" style="text-align:center; color:#777;">No hay clientes registrados.</td></tr>`;
+            
+            document.getElementById('adminPanel').style.display = 'block';
+        }
+
+        function aprobarRecarga(email, indexHistorial) {
+            let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
+            let usuario = baseDatos[email];
+
+            if(usuario && usuario.historial[indexHistorial]) {
+                let item = usuario.historial[indexHistorial];
+                item.estado = "Aprobado";
+
+                // Extraer monto de la recarga o pedirlo al admin
+                let montoAsignar = item.monto || parseFloat(prompt(`Ingresa el monto en $ que deseas acreditar a ${email} para esta solicitud:`));
+                
+                if(!isNaN(montoAsignar) && montoAsignar > 0) {
+                    usuario.saldo = (usuario.saldo || 0) + montoAsignar;
+                    usuario.historial.push({
+                        fecha: new Date().toLocaleDateString(),
+                        servicio: `Acreditación de Saldo ($${montoAsignar})`,
+                        detalle: "Aprobado por el Administrador",
+                        estado: "Completado"
+                    });
+                }
+
+                localStorage.setItem('panax_base_clientes', JSON.stringify(baseDatos));
+                alert(`¡Saldo acreditado con éxito a ${email}! Se reflejará en su cuenta de inmediato.`);
+                abrirPanelAdmin();
+            }
+        }
+
+        function cerrarSesionAdmin() {
+            adminLogueado = false;
+            localStorage.removeItem('panax_admin_activo');
+            irAlInicio();
+            actualizarBarraSuperior();
         }
 
         function actualizarBarraSuperior() {
             let topBtns = document.getElementById('topNavButtons');
-            if(usuarioLogueado) {
+            let baseDatos = JSON.parse(localStorage.getItem('panax_base_clientes')) || {};
+
+            if(adminLogueado === "true") {
                 topBtns.innerHTML = `
+                    <button class="top-btn top-btn-admin" onclick="abrirPanelAdmin()">Panel Admin</button>
+                    <button class="top-btn" style="background: #222; border-color: #444;" onclick="cerrarSesionAdmin()">Salir</button>
+                `;
+            } else if(usuarioLogueado) {
+                let saldoActual = baseDatos[usuarioLogueado] ? (baseDatos[usuarioLogueado].saldo || 0) : 0;
+                topBtns.innerHTML = `
+                    <div class="wallet-badge" style="padding: 5px 10px; font-size: 11px;">$${saldoActual.toFixed(2)}</div>
                     <button class="top-btn top-btn-secondary" onclick="abrirMiPanel()">Mi Panel</button>
                     <button class="top-btn" style="background: #222; border-color: #444;" onclick="cerrarSesion()">Salir</button>
                 `;
